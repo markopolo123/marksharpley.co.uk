@@ -7,15 +7,15 @@ pipeline:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
       - "hugo -t hello-friend-ng"
-  # stagingtest:
-  #   image: lucap/drone-netlify
-  #   site_id: ${SITE_ID}
-  #   secrets: [ netlify_token, site_id]
-  #   path: ./public/
-  #   environment: staging
-  #   when:
-  #     branch:
-  #       exclude: [ master ]
+  stagingtest:
+    image: lucap/drone-netlify
+    site_id: ${SITE_ID}
+    secrets: [ netlify_token, site_id]
+    path: ./public/
+    environment: staging
+    when:
+      branch:
+        exclude: [ master ]
   # production:
   #   image: lucap/drone-netlify
   #   site_id: ${SITE_ID}
