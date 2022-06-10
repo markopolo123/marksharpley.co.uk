@@ -7,12 +7,10 @@ pipeline:
     image: debian
     commands:
       - ls
-  build:
-    image: plugins/hugo
-    settings:
-      hugo_version: 0.55
-      validate: false
-      theme: hello-friend-ng
+  hugo-build:
+    image: klakegg/hugo:0.93.2
+    commands:
+      - "-t hello-friend-ng"
   netlify:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
