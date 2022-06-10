@@ -11,7 +11,7 @@ pipeline:
     image: plugins/hugo
     settings:
       hugo_version: 0.55
-      validate: true
+      validate: false
       theme: hello-friend-ng
   netlify:
     image: lucap/drone-netlify
