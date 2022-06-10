@@ -1,0 +1,26 @@
+pipeline:
+  get-theme:
+    image: alpine/git
+    commands:
+      - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git --branch 1.0.9 themes/hello-friend-ng
+  hugo-build:
+    image: klakegg/hugo:0.93.2-alpine-ci
+    commands:
+      - "hugo -t hello-friend-ng"
+  staging:
+    image: lucap/drone-netlify
+    site_id: $${SITE_ID}
+    secrets: [ netlify_token, site_id]
+    path: ./public/
+    environment: staging
+    when:
+      branch:
+        exclude: [ master ]
+  production:
+    image: lucap/drone-netlify
+    site_id: $${SITE_ID}
+    secrets: [ netlify_token, site_id]
+    path: ./public/
+    environment: production
+    when:
+      branch: [ master ]
