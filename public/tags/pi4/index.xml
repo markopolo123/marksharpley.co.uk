@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pi4 on Welcome to my site</title>
+    <link>/tags/pi4/</link>
+    <description>Recent content in Pi4 on Welcome to my site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 16 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/pi4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inlets on the water</title>
+      <link>/posts/smart-boat/</link>
+      <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/smart-boat/</guid>
+      <description>Introduction Before we dive into the technical aspect of this blog post there should probably be some explanation for how we got here.
+Like many of us, I&amp;rsquo;ve at times struggled with the balance of remote work, lockdown and my personal life. I&amp;rsquo;ve done all the usual stuff - bread baking, home IOT setup, and a lot of cycling but there was another itch which required scratching.
+Meet Ionic. She&amp;rsquo;s a 17 metre narrow boat, laid down in 1986.</description>
+    </item>
+    
+    <item>
+      <title>k3s, Ubuntu 19.10 and a Pi4</title>
+      <link>/posts/ubuntu-pi4-k3s/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ubuntu-pi4-k3s/</guid>
+      <description>On the matter of Operating Systems Raspian is perfectly good, but there are a few niggles. It isn&amp;rsquo;t 64 bit, so running things like mongodb is a problem. Also, it&amp;rsquo;d be nice to use cloud-init to preconfigure some stuff, such as SSH keys. If you want to try a 64 bit OS for your Pi4, Ubuntu is a solid option.
+cgroup_memory = 0 cgroup_memory is disabled by default on raspbian and is required for k8s.</description>
+    </item>
+    
+    <item>
+      <title>OpenFAAS via Containerd on a Raspberry PI 4</title>
+      <link>/posts/pi4-containerd-openfaas/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/pi4-containerd-openfaas/</guid>
+      <description>Intro OpenFAAS is a serverless tool. One of the things I like most about it - it&amp;rsquo;s pretty agnostic. You can bring your own infra or orchestrator and roll with Dockerfiles. No vendor lock in!
+Their tagline: OpenFaaS® makes it simple to deploy both functions and existing code to Kubernetes
+While it is mainly used with k8s, there are also providers for other orchestrators, such as Hashicorp&amp;rsquo;s Nomad. Today I&amp;rsquo;ll be trying out a new provider for Containerd on my Raspberry Pi 4b.</description>
+    </item>
+    
+  </channel>
+</rss>

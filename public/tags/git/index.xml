@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Welcome to my site</title>
+    <link>/tags/git/</link>
+    <description>Recent content in git on Welcome to my site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tools of The Trade :: Git</title>
+      <link>/posts/tools-of-the-trade/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tools-of-the-trade/</guid>
+      <description>Introduction This is the first in a series of posts about tools and processes which make my life as a engineer better. In this first post we&amp;rsquo;ll take a look at Git.
+Git is a wonderful tool. For teams working together (and individuals!) on source code, git is the go to for distributed version control software.
+ It&amp;rsquo;s assumed here that the reader already has a working knowledge of Git. This post focuses on tooling to be used on top of Git</description>
+    </item>
+    
+  </channel>
+</rss>

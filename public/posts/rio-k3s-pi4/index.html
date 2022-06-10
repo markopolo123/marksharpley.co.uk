@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Rio on K3s on a pi4 :: Personal Site — Some time blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Say What? Rio is a MicroPaaS for Kubernetes from Rancher. A not complete list of things Rio provides:
+ Automatic DNS Load Balancing Routing  We&#39;re going to be running it on a Raspberry Pi4, with Kubernetes coming from K3s, another Rancher project.
+Installation A few assumptions:
+ You have a working Raspberry Pi 4 A public IP and some way of routing traffic to your Pi.  Update your system:"/>
+<meta name="keywords" content="k3s, k8s"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="/posts/rio-k3s-pi4/" />
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+  <link rel="stylesheet" href="/assets/rgreen.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="/img/favicon/rgreen.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Rio on K3s on a pi4 :: Personal Site — Some time blog" />
+<meta name="twitter:description" content="Say What? Rio is a MicroPaaS for Kubernetes from Rancher. A not complete list of things Rio provides:
+ Automatic DNS Load Balancing Routing  We&#39;re going to be running it on a Raspberry Pi4, with Kubernetes coming from K3s, another Rancher project.
+Installation A few assumptions:
+ You have a working Raspberry Pi 4 A public IP and some way of routing traffic to your Pi.  Update your system:" />
+<meta name="twitter:site" content="/" />
+<meta name="twitter:creator" content="Mark" />
+<meta name="twitter:image" content="/img/rio.jpeg">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Rio on K3s on a pi4 :: Personal Site — Some time blog">
+<meta property="og:description" content="Say What? Rio is a MicroPaaS for Kubernetes from Rancher. A not complete list of things Rio provides:
+ Automatic DNS Load Balancing Routing  We&#39;re going to be running it on a Raspberry Pi4, with Kubernetes coming from K3s, another Rancher project.
+Installation A few assumptions:
+ You have a working Raspberry Pi 4 A public IP and some way of routing traffic to your Pi.  Update your system:" />
+<meta property="og:url" content="/posts/rio-k3s-pi4/" />
+<meta property="og:site_name" content="Rio on K3s on a pi4" />
+<meta property="og:image" content="/img/rio.jpeg">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-01-08 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Home
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/markopolo123">GitHub</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="https://github.com/markopolo123">GitHub</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/posts/rio-k3s-pi4/">Rio on K3s on a pi4</a></h1>
+  <div class="post-meta">
+      
+    <span class="post-date">
+      2020-01-08
+    </span>
+    
+    
+    <span class="post-author">::
+      Mark
+    </span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="/tags/pi4/">pi4</a>&nbsp;
+    
+    #<a href="/tags/rio/">rio</a>&nbsp;
+    
+    #<a href="/tags/k3s/">k3s</a>&nbsp;
+    
+  </span>
+  
+
+  
+  <img src="/img/rio.jpeg" class="post-cover" />
+  
+
+  <div class="post-content">
+    <h1 id="say-what">Say What?</h1>
+<p><a href="https://rio.io/">Rio</a> is a MicroPaaS for Kubernetes from Rancher. A not complete list of things Rio provides:</p>
+<ul>
+<li>Automatic DNS</li>
+<li>Load Balancing</li>
+<li>Routing</li>
+</ul>
+<p><img src="https://rio.io/images/how-it-works-rio.svg" alt="rio"></p>
+<p>We're going to be running it on a Raspberry Pi4, with Kubernetes coming from <a href="https://k3s.io/">K3s</a>, another Rancher project.</p>
+<h2 id="installation">Installation</h2>
+<p>A few assumptions:</p>
+<ul>
+<li>You have a working Raspberry Pi 4</li>
+<li>A public IP and some way of routing traffic to your Pi.</li>
+</ul>
+<p>Update your system:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt install git
+</code></pre></div><h3 id="install-k3s">Install k3s</h3>
+<blockquote>
+<p>The k3s site does indeed suggest the below step - while not good for a production environment I'm okay with it for the purposes of messing around&hellip;</p>
+</blockquote>
+<p>Curl a random script off the internet and pipe it to shell:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  curl -sfL https://get.k3s.io | sh -
+  <span style="color:#75715e"># Check for Ready node, takes maybe 30 seconds</span>
+  k3s kubectl get node
+  <span style="color:#75715e"># Kubeconfig is written to /etc/rancher/k3s/k3s.yaml</span>
+</code></pre></div><h3 id="install-rio">Install Rio</h3>
+<p>With k8s up and running, lets grab rio:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Download the CLI (available for macOS, Windows, Linux)</span>
+$ curl -sfL https://get.rio.io | sh -   <span style="color:#75715e"># or manually from https://github.com/rancher/rio/releases</span>
+
+<span style="color:#75715e"># Setup your cluster for Rio</span>
+$ rio install
+
+<span style="color:#75715e"># Make sure all the pods are up and running. These may take several minutes.</span>
+$ rio -n rio-system pods
+
+<span style="color:#75715e"># Run a sample service</span>
+$ rio run -p 80:8080 https://github.com/rancher/rio-demo
+
+<span style="color:#75715e"># Check the status</span>
+$ rio ps
+$ rio info
+</code></pre></div><h1 id="lets-squeeze-in-a-few-more-buzzwords">Lets squeeze in a few more buzzwords</h1>
+<ul>
+<li>Continous Delivery on Gitlab</li>
+<li>Git-Ops</li>
+</ul>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="/posts/pi4-containerd-openfaas/">
+          <span class="button__text">OpenFAAS via Containerd on a Raspberry PI 4</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

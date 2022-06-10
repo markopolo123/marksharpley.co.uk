@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Welcome to my site</title>
+    <link>/tags/hugo/</link>
+    <description>Recent content in hugo on Welcome to my site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Hugo Site</title>
+      <link>/posts/home/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/home/</guid>
+      <description>First post on the new site. It&amp;rsquo;s a hugo site, using the terminal theme by panr. Previously Pelican was my static site generator of choice but I&amp;rsquo;ve heard good things about Hugo and fancied giving it a go.
+Here&amp;rsquo;s how its configured:
+Installation I&amp;rsquo;m using Hugo with Github Pages) and my own hosting.
+As I won&amp;rsquo;t be using Hugo/this blog everyday I will forget the commands for it so I&amp;rsquo;ve wrapped everything I need into a Makefile:</description>
+    </item>
+    
+  </channel>
+</rss>

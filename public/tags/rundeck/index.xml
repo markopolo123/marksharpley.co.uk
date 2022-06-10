@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rundeck on Welcome to my site</title>
+    <link>/tags/rundeck/</link>
+    <description>Recent content in Rundeck on Welcome to my site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rundeck/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rundeck and Terraform</title>
+      <link>/posts/rundeck-api/</link>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/rundeck-api/</guid>
+      <description>Intro Rundeck is an opensource project; it allows you to turn scripts and playbooks into self service jobs. It has a full featured API but there isn&amp;rsquo;t much online about using it. This post will provide a few examples of using it to interact with Rundeck projects, their settings and jobs.
+We&amp;rsquo;ll also briefly go over using Terraform to manage project life cycles and project settings.
+All code is a available in a github repository.</description>
+    </item>
+    
+  </channel>
+</rss>

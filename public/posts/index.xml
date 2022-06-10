@@ -1,0 +1,860 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Welcome to my site</title>
+        <link>/posts/</link>
+        <description>Recent content in Posts on Welcome to my site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate>
+        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Tools of The Trade :: Git</title>
+            <link>/posts/tools-of-the-trade/</link>
+            <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/tools-of-the-trade/</guid>
+            <description>Introduction This is the first in a series of posts about tools and processes which make my life as a engineer better. In this first post we&amp;rsquo;ll take a look at Git.
+Git is a wonderful tool. For teams working together (and individuals!) on source code, git is the go to for distributed version control software.
+ It&amp;rsquo;s assumed here that the reader already has a working knowledge of Git. This post focuses on tooling to be used on top of Git</description>
+            <content type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>This is the first in a series of posts about tools and processes which make my life as a
+engineer better. In this first post we&rsquo;ll take a look at <code>Git</code>.</p>
+<p><a href="https://git-scm.com">Git</a> is a wonderful tool. For teams working together (and individuals!) on source code, <code>git</code> is the go to for distributed version control software.</p>
+<blockquote>
+<p>It&rsquo;s assumed here that <em>the reader</em> already has a working knowledge of Git. This post
+focuses on tooling to be used <em>on top</em> of Git</p>
+</blockquote>
+<h2 id="code-quality">Code Quality</h2>
+<p>Git supports <code>hooks</code> which may be used to trigger actions when certain events occur, both on your local
+client and on the server. <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">This page</a> shows more details on them. I used to write my own hooks, until I discovered <a href="https://pre-commit.com">pre-commit</a>. This is a python based tool for managing your git hooks. It&rsquo;s easy to write your
+own and there is a large library of hooks already out there on the Internet.</p>
+<p>I use this on my client device and also in my CI to ensure that code pushed meets set expectations.</p>
+<p>Some of the many, many things which pre-commit can do for you:</p>
+<ul>
+<li>Ensure that ansible vault files are encrypted</li>
+<li>Stop commiting of private keys</li>
+<li>Linting and style checks.</li>
+</ul>
+<h2 id="standardised-commit-messages">Standardised Commit Messages</h2>
+<p>Standardising commit messages is a bit more <code>out there</code>, but it makes sense for a few reasons detailed below.
+There are a few options in this space but I prefer <a href="https://commitizen-tools.github.io/commitizen/">Commitizen</a>.</p>
+<blockquote>
+<p>Somewhat confusingly there are <strong>two</strong> projects called <code>Commitizen</code>. Both are great but share only
+a name. The one above is based on <code>python</code>, the <a href="https://github.com/commitizen/cz-cli">other (cz-js)</a> is based on <code>Javascript</code></p>
+</blockquote>
+<h3 id="reduce-friction-for-contributers-and-maintainers">Reduce Friction for contributers and maintainers</h3>
+<p>Providing templates and running git hooks helps with commit message quality, but provides
+slow feedback for <strong>individual contributors</strong>. Using <code>Commitizen</code> aleviates this.</p>
+<h3 id="you-can-use-it-to-trigger-ci">You can use it to trigger CI</h3>
+<p>When combined with pre-commit (to check your commit messages conform to your standard), users gain the ability to start creating <code>#git-ops</code> pipelines which may take actions based on the contents of
+commit messages. Some obvious wins here:</p>
+<ul>
+<li>Workflows for tagging and releasing code based on <code>semantic versioning</code></li>
+<li>Automated building of changelogs</li>
+</ul>
+<p>While <code>Commitizen</code> is very useful out of the box it&rsquo;s also dead easy to extend it
+and customise.</p>
+<h2 id="git-gui">Git GUI</h2>
+<p>There are many tools for providing a <code>Graphical User Interface</code> ontop of git. VSCode,
+which I use heavily, has many extensions worth talking about.</p>
+<p>Out of all of these, there is one application which provides <strong>joy</strong> every time I
+use it:</p>
+<h3 id="lazygit">Lazygit</h3>
+<p><a href="https://github.com/jesseduffield/lazygit">LazyGit</a> is written for users which want
+a Git GUI <em>in their terminal</em>. It reduces the friction and learning curve on doing
+more complex (and simple) Git operations.</p>
+<p><img src="/img/lazygit.png" alt="lazygit in action"></p>
+<p>It is <a href="https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium">customisable</a> and works well with <code>Commitizen</code></p>
+<h2 id="standardised-git-flow">Standardised git flow</h2>
+<p>While the above tools are useful, having a standardised git flow across your is much
+more important. Especially if you are in a team working across git repositories.</p>
+<p>Have this documented as a living document alongside your team&rsquo;s coding standards is a
+good practice.</p>
+<h2 id="cloning-many-organisation-repos-from-github">Cloning many organisation repos from GitHub</h2>
+<p>This is most easily accomplished using the Github CLI.</p>
+<p>If using homebrew on a mac instsall the Github CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install gh
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Login with CLI tool</span>
+gh auth login
+
+<span style="color:#75715e"># Set your orgname</span>
+$myorgname<span style="color:#f92672">=</span>yourorgname
+<span style="color:#75715e"># Clone up to 1000 repos under your current folder</span>
+gh repo list $myorgname --limit <span style="color:#ae81ff">1000</span> | <span style="color:#66d9ef">while</span> read -r repo _; <span style="color:#66d9ef">do</span>
+  gh repo clone <span style="color:#e6db74">&#34;</span>$repo<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span>$repo<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>Free Functions as a service</title>
+            <link>/posts/free-functions/</link>
+            <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/free-functions/</guid>
+            <description>Intro Five minutes (almost!) to always free functions as a service courtesy of Oracle Cloud The full source code for this project is here.
+Why do this? All the major cloud providers offer some level of free service, however Oracle cloud is the only one offering this much compute free forever.
+Yeah but why Oracle? Okay you got me. I got sucked into their free tier. Plus I like the way they describe instances sizes/flavours as shapes.</description>
+            <content type="html"><![CDATA[<h1 id="intro">Intro</h1>
+<p>Five minutes (almost!) to always free functions as a service courtesy of Oracle Cloud
+The full source code for this project <a href="https://github.com/markopolo123/faasd-oracle-cloud-terraform">is here.</a></p>
+<h1 id="why-do-this">Why do this?</h1>
+<p>All the major cloud providers offer some level of free service, however Oracle cloud is
+the only one offering this much compute free forever.</p>
+<h2 id="yeah-but-why-oracle">Yeah but why Oracle?</h2>
+<p>Okay you got me. I got sucked into their free tier. Plus I like the way they describe
+instances sizes/flavours as <code>shapes</code>. It&rsquo;s kinda cute.</p>
+<h2 id="why-cloudflare">Why Cloudflare?</h2>
+<p>This is more interesting choice. If I were on AWS I&rsquo;d just use Route 53, but since I
+already use CloudFlare for DNS HTTPS certs with Let&rsquo;s Encrypt and for Dynamic DNS it was
+a simple choice to use them for the DNS configuration in this project.</p>
+<p>Terraform makes this easy to use, I can create an instance in Oracle&rsquo;s cloud, assign it
+a public IP which is then passed to Cloudflare as the IP to register for DNS.</p>
+<h1 id="what-you-will-need">What you will need</h1>
+<ul>
+<li><a href="https://www.terraform.io/downloads.html">Terraform</a></li>
+<li><a href="https://taskfile.dev/#/">TaskFile</a> - used to wrap tasks.</li>
+</ul>
+<p>If you are on MacOS and have homebrew:</p>
+<pre tabindex="0"><code>brew install go-task/tap/go-task
+brew install terraform
+</code></pre><ul>
+<li>An account on <a href="https://www.oracle.com/uk/cloud/free/">Oracle Cloud free tier</a>.
+This will probably take longer to setup than this project.</li>
+</ul>
+<p><img src="/img/oracle-cloud-signup.png" alt="having fun with oracle cloud"></p>
+<ul>
+<li>Cloudflare account and a domain name using their nameservers.
+<img src="/img/dns.png" alt="dns"></li>
+</ul>
+<h2 id="configure-oci-cli-api-access">Configure OCI CLI API access.</h2>
+<p>The easiest way to do this is with the OCI CLI tool:</p>
+<p>On a mac with homebrew you may do <code>brew install oci-cli</code></p>
+<p><a href="https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/climanualinst.htm">Installing OCI CLI on Linux</a>.</p>
+<p><a href="https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionssetupapikey.htm">The Oracle cloud docs</a>
+have more information on how to use this CLI tool.</p>
+<h2 id="configure-cloudflare-api-token">Configure Cloudflare API token</h2>
+<p>I&rsquo;ve configured my Domain name to use CLoudflare&rsquo;s name servers so I can leverage the
+<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Terraform provider</a>
+to automatically give my FaaSD appliance a nice URL and a fancy Let&rsquo;s Encrypt
+certificate.</p>
+<p>The <a href="https://learn.hashicorp.com/tutorials/terraform/cloudflare-static-website?_ga=2.139441523.131271239.1627052452-1560403573.1626731673">Hashi docs</a>
+have a nice tutorial on how to configure an API token for use with CLoudflare.</p>
+<h1 id="lets-get-going">Let&rsquo;s get going</h1>
+<h2 id="clone-the-project">Clone the Project</h2>
+<p>Clone the project from github:</p>
+<pre tabindex="0"><code>git clone git@github.com:markopolo123/faasd-oracle-cloud-terraform.git
+
+cd faasd-oracle-cloud-terraform
+</code></pre><h2 id="add-your-variables">Add your variables</h2>
+<p>I used Taskfile to make this easy. If you don&rsquo;t want to use Taskfile you can take a look
+at taskfile.yml to see a breakdown of the terraform commands.</p>
+<pre tabindex="0"><code># Create terraform.tfvars
+task setup
+</code></pre><p>This will create <code>terraform.tfvars</code> for you to populate.</p>
+<p>Populate your <code>terraform.tfvars</code> file. It should look something like the below:
+<img src="/img/vars.png" alt="terraform.tfvars"></p>
+<h2 id="create-your-free-faasd-instance">Create your FREE FaaSD instance</h2>
+<p>Once you have added your variables you are good to go. A single command is all you need:</p>
+<pre tabindex="0"><code>task apply
+</code></pre><p><img src="/img/terraforming.png" alt="success"></p>
+<p>If you want to do a dry run and see what the apply command would do:</p>
+<pre tabindex="0"><code>task plan
+</code></pre><p><img src="/img/plan.png" alt="theplan"></p>
+<h2 id="using-your-new-instance">Using your new instance</h2>
+<p>You should now be able to log in using the web interface and the faas-cli tool:</p>
+<p><img src="/img/faasd_web.png" alt="web interface"></p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Things to improve&hellip;</p>
+<ul>
+<li>Image based deployment would be quicker</li>
+<li>Exposing metrics via the built in prometheus</li>
+<li>Making some functions ;)</li>
+</ul>
+<p>If you are interested in finding out more about FaaSd check out the <a href="https://github.com/openfaas/faasd">project</a>
+here or the official <a href="https://openfaas.gumroad.com/l/serverless-for-everyone-else">OpenFaaS book</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Reusing Old Smart bulbs</title>
+            <link>/posts/diy-smart-lights/</link>
+            <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/diy-smart-lights/</guid>
+            <description>Intro Around five years ago I purchased some smart light bulbs. They are designed to be used with a smart hub, on of these. Turns out that the company behind this has made a new version of the hub, the miboxer, which is not backwards compatible with the older bulbs. It also requires an android account with rather dubious permission requirements to use.
+I&amp;rsquo;m not a fan of this kind of behaviour from companies and would rather reuse things where possible.</description>
+            <content type="html"><![CDATA[<h1 id="intro">Intro</h1>
+<p>Around five years ago I purchased some smart light bulbs. They are designed to be used
+with a smart hub, <a href="https://www.amazon.co.uk/LIGHTEU%C2%AE-Controller-Wireless-Downlight-Compatible/dp/B073WVLH3F/ref=asc_df_B073WVLH3F/?tag=googshopuk-21&amp;linkCode=df0&amp;hvadid=309968321179&amp;hvpos=&amp;hvnetw=g&amp;hvrand=779779749495666085&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=1006598&amp;hvtargid=pla-467006343726&amp;psc=1">on of these</a>. Turns out that the company behind this has made
+a new version of the hub, the miboxer, which is not backwards compatible with the
+older bulbs. It also requires an android account with rather dubious permission
+requirements to use.</p>
+<p>I&rsquo;m not a fan of this kind of behaviour from companies and would rather reuse things
+where possible. With this in mind I set out to do some reverse engineering. A few
+seconds later I discovered <a href="https://github.com/sidoh/esp8266_milight_hub">this awesome project</a>
+from <a href="http://blog.christophermullins.com/2017/02/11/milight-wifi-gateway-emulator-on-an-esp8266/">Christopher Mullins</a>. Sometimes I love the Internet.</p>
+<p>So, with lots of time saved, I set out to build a replacement hub for my smart bulbs.</p>
+<h1 id="the-shopping-list">The Shopping List</h1>
+<pre><code>| Item                         | Cost |
+| ---------------------------- | ---- |
+| ESP8266 NodeMCU CP2102       | £3   |
+| NRF24L01+PA+LNA RF           | £2   |
+| Dupont Female to Female Wire | £0   |
+</code></pre>
+<p>Ebay or Amazon have both the NodeMCUv2 and radio. I happened to have the dupont wire
+already.
+<img src="/img/nodemcuv2.jpeg" alt="nodemcu"></p>
+<h1 id="plugging-it-all-in">Plugging it all in</h1>
+<p><a href="https://www.mysensors.org/build/connect_radio#nrf24l01+-&amp;-esp8266">This guide</a> details
+how to connect an NRF24 to an ESP8266</p>
+<table>
+<thead>
+<tr>
+<th>NodeMCU</th>
+<th>Radio</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>Black</td>
+</tr>
+<tr>
+<td>3V3</td>
+<td>VCC</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>D2 (GPIO4)</td>
+<td>CE</td>
+<td>Orange</td>
+</tr>
+<tr>
+<td>D8 (GPIO15)</td>
+<td>CSN/CS</td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td>D5 (GPIO14)</td>
+<td>SCK</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>D7 (GPIO13)</td>
+<td>MOSI</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>D6 (GPIO12)</td>
+<td>MISO</td>
+<td>Violet</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/img/assembly.jpeg" alt="assembled hub"></p>
+<h1 id="prepare-for-installation">Prepare for installation</h1>
+<p>I&rsquo;m using a mac with homebrew, so the below steps assume familarity with the terminal
+and homebrew</p>
+<pre tabindex="0"><code>brew tap homebrew/cask-drivers
+brew install --cask silicon-labs-vcp-driver
+brew install gettext
+brew link gettext --force
+</code></pre><h1 id="install-the-project">Install the project</h1>
+<pre tabindex="0"><code>git clone https://github.com/sidoh/esp8266_milight_hub.git
+cd esp8266_milight_hub
+</code></pre><p>At this point I plugged the esp8266 into my laptop in preparation for installation.</p>
+<pre tabindex="0"><code>export ESP_BOARD=nodemcuv2
+platformio run -e $ESP_BOARD --target upload
+</code></pre><p>The output if successful looks like this:</p>
+<p><img src="/img/smart-hub-install.png" alt="A successful install"></p>
+<h1 id="adding-to-my-wifi-network">Adding to my WiFi network</h1>
+<p>This was pretty simple, just bare in mind that the NodeMCU only supports 2.4Ghz.
+<a href="https://github.com/sidoh/esp8266_milight_hub">The project readme </a>has more information on how to configure this.</p>
+<h1 id="pairing-a-light">Pairing a light</h1>
+<p>This works the similarily to the official smarthub - hit the pair button in the web UI
+within a few seconds of turning on the light and your done.</p>
+<h1 id="using-the-rest-api">Using the REST API</h1>
+<p>An example of using the rest API with curl to turn on a light:</p>
+<pre tabindex="0"><code> curl --request POST --header &quot;Content-Type: application/json&quot; --data '{
+&quot;state&quot;: &quot;On&quot;}' http://192.168.0.18/gateways/0x1/rgb_cct/0
+</code></pre><h1 id="next-steps">Next Steps</h1>
+<ul>
+<li>Design and print a box</li>
+<li>Integrate with Home Assistant</li>
+<li>Make a nice friendly android app to control my lights</li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>LXC, Proxmox and Terraform</title>
+            <link>/posts/proxmox-terraform/</link>
+            <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/proxmox-terraform/</guid>
+            <description>Quick post with an example of using Terraform to create LXC containers on Proxmox.
+There are a few proxmox providers out there in the wilds, I chose to use the one by telmate:
+terraform { required_providers { proxmox = { source = &amp;#34;Telmate/proxmox&amp;#34; version = &amp;#34;2.6.5&amp;#34; } } } Creating LXC Containers The Docs for this suck, here is a working snippet for version 2.6.5 of the provider:
+resource &amp;#34;proxmox_lxc&amp;#34; &amp;#34;lxc-test&amp;#34; { hostname = &amp;#34;terraform-new-container&amp;#34; cores = 1 memory = &amp;#34;1024&amp;#34; swap = &amp;#34;2048&amp;#34; features { nesting = true } rootfs { storage = &amp;#34;local-lvm&amp;#34; size = &amp;#34;8G&amp;#34; } network { name = &amp;#34;eth0&amp;#34; bridge = &amp;#34;vmbr0&amp;#34; ip = &amp;#34;dhcp&amp;#34; ip6 = &amp;#34;dhcp&amp;#34; } ostemplate = &amp;#34;local:vztmpl/ubuntu-20.</description>
+            <content type="html"><![CDATA[<p>Quick post with an example of using Terraform to create LXC containers on Proxmox.</p>
+<p>There are a few proxmox providers out there in the wilds, I chose to use the one by
+<a href="https://github.com/Telmate/terraform-provider-proxmox">telmate</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">terraform <span style="color:#f92672">{</span>
+  required_providers <span style="color:#f92672">{</span>
+    proxmox <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+      source  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Telmate/proxmox&#34;</span>
+      version <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2.6.5&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="creating-lxc-containers">Creating LXC Containers</h2>
+<p>The Docs for this suck, here is a working snippet for version 2.6.5 of the provider:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">resource <span style="color:#e6db74">&#34;proxmox_lxc&#34;</span> <span style="color:#e6db74">&#34;lxc-test&#34;</span> <span style="color:#f92672">{</span>
+  hostname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;terraform-new-container&#34;</span>
+  cores    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+  memory   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1024&#34;</span>
+  swap     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2048&#34;</span>
+  features <span style="color:#f92672">{</span>
+    nesting <span style="color:#f92672">=</span> true
+  <span style="color:#f92672">}</span>
+  rootfs <span style="color:#f92672">{</span>
+    storage <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;local-lvm&#34;</span>
+    size    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;8G&#34;</span>
+  <span style="color:#f92672">}</span>
+  network <span style="color:#f92672">{</span>
+    name   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eth0&#34;</span>
+    bridge <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;vmbr0&#34;</span>
+    ip     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dhcp&#34;</span>
+    ip6    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dhcp&#34;</span>
+  <span style="color:#f92672">}</span>
+  ostemplate   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;local:vztmpl/ubuntu-20.04-standard_20.04-1_amd64.tar.gz&#34;</span>
+  password     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;super-secret-password&#34;</span>
+  target_node  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pve&#34;</span>
+  unprivileged <span style="color:#f92672">=</span> true
+  onboot       <span style="color:#f92672">=</span> true
+  start        <span style="color:#f92672">=</span> false
+<span style="color:#f92672">}</span>
+</code></pre></div><p>For more information on the Proxmox API have a look at the <a href="https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/%7Bnode%7D/lxc">docs</a> and the Terraform Provider
+<a href="https://github.com/Telmate/terraform-provider-proxmox/blob/master/proxmox/resource_lxc.go">source code</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Rundeck and Terraform</title>
+            <link>/posts/rundeck-api/</link>
+            <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/rundeck-api/</guid>
+            <description>Intro Rundeck is an opensource project; it allows you to turn scripts and playbooks into self service jobs. It has a full featured API but there isn&amp;rsquo;t much online about using it. This post will provide a few examples of using it to interact with Rundeck projects, their settings and jobs.
+We&amp;rsquo;ll also briefly go over using Terraform to manage project life cycles and project settings.
+All code is a available in a github repository.</description>
+            <content type="html"><![CDATA[<h1 id="intro">Intro</h1>
+<p>Rundeck is an opensource project; it allows you to turn scripts and playbooks into self service jobs. It has a <a href="https://docs.rundeck.com/docs/api/rundeck-api.html">full featured API</a> but there isn&rsquo;t much online about using it. This post will provide a few examples of using it to interact with Rundeck projects, their settings and jobs.</p>
+<p>We&rsquo;ll also briefly go over using <a href="https://www.terraform.io/">Terraform</a> to manage project life cycles and project settings.</p>
+<p>All code is a available in a <a href="https://github.com/markopolo123/rundeck-terraform-api">github repository</a>.</p>
+<h1 id="prerequisites">Prerequisites</h1>
+<ul>
+<li>Rundeck, with an user and valid auth token.</li>
+<li>curl - for poking rundeck</li>
+<li>jq - for manipulating JSON</li>
+<li>Terraform - for creating projects</li>
+</ul>
+<h1 id="create-a-rundeck-project-with-terraform">Create a Rundeck project with Terraform</h1>
+<p>In Rundeck a project is the container object for a set of jobs and the configuration for which servers those jobs can be run on.</p>
+<p>The <a href="https://www.terraform.io/docs/providers/rundeck/index.html">Terraform Rundeck Provider</a> supports managing the following objects:</p>
+<ul>
+<li>rundeck_acl_policy</li>
+<li>rundeck_job</li>
+<li>rundeck_project</li>
+<li>rundeck_private_key</li>
+<li>rundeck_public_key</li>
+</ul>
+<h2 id="specifying-ansible-as-a-resource-model">Specifying Ansible as a resource model</h2>
+<p>Each Rundeck project can have it&rsquo;s own inventory of hosts. You may also use Ansible inventories and <code>ansible_facts</code> as a source of truth for your Rundeck project inventories.</p>
+<p>In this example we are adding two resource models to a project:</p>
+<ul>
+<li>local</li>
+<li>Ansible</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">resource <span style="color:#e6db74">&#34;rundeck_project&#34;</span> <span style="color:#e6db74">&#34;anvils&#34;</span> <span style="color:#f92672">{</span>
+  name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;anvils&#34;</span>
+  description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Application for managing Anvils&#34;</span>
+
+  ssh_key_storage_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;path-here&#34;</span>
+  resource_model_source <span style="color:#f92672">{</span>
+    type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;local&#34;</span>
+    config <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  resource_model_source <span style="color:#f92672">{</span>
+    type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;com.batix.rundeck.plugins.AnsibleResourceModelSourceFactory&#34;</span>
+
+    config <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+      format                   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;resourcexml&#34;</span>
+      ansible-gather-facts     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;true&#34;</span>
+      ansible-ignore-errors    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;true&#34;</span>
+      ansible-config-file-path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/ansible/config/path&#34;</span>
+      ansible-inventory        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/ansible/inventory/path&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="adding-config-not-explictly-supported-by-the-provider">Adding config not explictly supported by the provider</h2>
+<p>Adding extra config not specifically supported by the provider is pretty easy, thanks to the <code>extra_config</code> option.</p>
+<p>From the docs:</p>
+<blockquote>
+<p><code>extra_config</code> - (Optional) Behind the scenes a Rundeck project is really an arbitrary set of key/value pairs. This map argument allows setting any configuration properties that aren&rsquo;t explicitly supported by the other arguments described above, but due to limitations in Terraform the key names must be written with slashes in place of dots. Do not use this argument to set properties that the above arguments set, or undefined behavior will result.</p>
+</blockquote>
+<p>Here&rsquo;s an example, setting the default group expansion setting:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">resource <span style="color:#e6db74">&#34;rundeck_project&#34;</span> <span style="color:#e6db74">&#34;anvils&#34;</span> <span style="color:#f92672">{</span>
+  name        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;anvils&#34;</span>
+  description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Application for managing Anvils&#34;</span>
+
+  <span style="color:#75715e">#ssh_key_storage_path = rundeck_private_key.anvils.path</span>
+  resource_model_source <span style="color:#f92672">{</span>
+    type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;local&#34;</span>
+    config <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  extra_config <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;project/jobs/gui/groupExpandLevel&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h1 id="rundeck-api-examples">Rundeck API Examples</h1>
+<p>In these examples I am passing my Rundeck authentication token and URL through to curl as environment variables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export RUNDECK_TOKEN<span style="color:#f92672">=</span>token-here
+export RUNDECK_URL<span style="color:#f92672">=</span>https://rundeck.url.here
+</code></pre></div><p>We&rsquo;ll start with reading (GET) a few things from Rundeck then move on to POSTing changes to Rundeck. Note the API allows you to work with <code>XML</code> or <code>JSON</code>. We&rsquo;ll be using <code>JSON</code>.</p>
+<h2 id="listing-projects">Listing Projects</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s -X GET <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/30/projects?authtoken=</span><span style="color:#e6db74">${</span>RUNDECK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -H <span style="color:#e6db74">&#34;Accept: application/json&#34;</span>
+</code></pre></div><p>This will return you a list of projects, along with some information about each one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>
+  <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/34/project/anvils&#34;</span>,
+    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;anvils&#34;</span>,
+    <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;this is the description&#34;</span>,
+    <span style="color:#e6db74">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;your label&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">]</span>
+
+</code></pre></div><p>Now let&rsquo;s pipe this output to <code>jq</code> and filter the result to just show project names:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s -X GET <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/34/projects?authtoken=</span><span style="color:#e6db74">${</span>RUNDECK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -H <span style="color:#e6db74">&#34;Accept: application/json&#34;</span> | jq <span style="color:#e6db74">&#39;.[]| .name&#39;</span>
+<span style="color:#e6db74">&#34;anvils&#34;</span>
+<span style="color:#e6db74">&#34;anvils2&#34;</span>
+</code></pre></div><h2 id="importing-jobs-from-a-git-repository">Importing jobs from a git repository</h2>
+<h3 id="adding-import-settings">Adding import settings</h3>
+<p>Note we are using key based auth in the example below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> curl -X POST <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/30/project/anvils/scm/import/plugin/git-import/setup?authtoken=</span><span style="color:#e6db74">${</span>RUNDECK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> --data <span style="color:#e6db74">&#39;{&#34;config&#34;: {
+</span><span style="color:#e6db74">    &#34;url&#34;: &#34;git@gitlab.com:rundeck-job-template.git&#34;,
+</span><span style="color:#e6db74">    &#34;fetchAutomatically&#34;: &#34;true&#34;,
+</span><span style="color:#e6db74">    &#34;pullAutomatically&#34;: &#34;true&#34;,
+</span><span style="color:#e6db74">    &#34;dir&#34;: &#34;/var/rundeck/projects/anvils/scm&#34;,
+</span><span style="color:#e6db74">    &#34;filePattern&#34;: &#34;.*.yaml&#34;,
+</span><span style="color:#e6db74">    &#34;importUuidBehavior&#34;: &#34;remove&#34;,
+</span><span style="color:#e6db74">    &#34;useFilePattern&#34;: &#34;true&#34;,
+</span><span style="color:#e6db74">    &#34;strictHostKeyChecking&#34;: &#34;yes&#34;,
+</span><span style="color:#e6db74">    &#34;sshPrivateKeyPath&#34;: &#34;keys/rundeck-private-key&#34;,
+</span><span style="color:#e6db74">    &#34;format&#34;: &#34;yaml&#34;,
+</span><span style="color:#e6db74">    &#34;branch&#34;: &#34;master&#34;,
+</span><span style="color:#e6db74">    &#34;gitPasswordPath&#34;: &#34;&#34;,
+</span><span style="color:#e6db74">    &#34;pathTemplate&#34;: &#34;${job.group}${job.name}-${job.id}.${config.format}&#34;
+</span><span style="color:#e6db74">  },
+</span><span style="color:#e6db74">  &#34;enabled&#34;: true,
+</span><span style="color:#e6db74">  &#34;integration&#34;: &#34;import&#34;,
+</span><span style="color:#e6db74">  &#34;project&#34;: &#34;anvils&#34;,
+</span><span style="color:#e6db74">  &#34;type&#34;: &#34;git-import&#34;
+</span><span style="color:#e6db74">}&#39;</span>
+
+</code></pre></div><h3 id="importing-jobs">Importing jobs</h3>
+<p>Once you&rsquo;ve added git import settings to a project you&rsquo;ll likely want to import jobs. You could do this manually, or you could run a script similar to the below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Function to build post data</span>
+<span style="color:#75715e"># We are picking up any jobs which have the status  `IMPORT_NEEDED`</span>
+
+generate_post_data<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<span style="color:#75715e"># Get list of jobs to import</span>
+  ITEMS<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s -X GET <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/30/project/anvils/scm/import/action/import-all/input?authtoken=</span><span style="color:#e6db74">${</span>RUNDECK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -H <span style="color:#e6db74">&#34;Accept: application/json&#34;</span> | jq <span style="color:#e6db74">&#39;[.importItems[] | select(.status == &#34;IMPORT_NEEDED&#34;) | .itemId]&#39;</span><span style="color:#66d9ef">)</span>
+  cat <span style="color:#e6db74">&lt;&lt;EOF
+</span><span style="color:#e6db74">{&#34;input&#34;:{
+</span><span style="color:#e6db74">&#34;message&#34;:&#34;\$commitMessage&#34;
+</span><span style="color:#e6db74">},
+</span><span style="color:#e6db74">&#34;jobs&#34;:[],
+</span><span style="color:#e6db74">&#34;items&#34;:${ITEMS},
+</span><span style="color:#e6db74">&#34;deleted&#34;:[]
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">EOF</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># Lets import our jobs</span>
+curl -X POST <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/30/project/anvils/scm/import/action/import-all?authtoken=</span><span style="color:#e6db74">${</span>RUNDECK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> --data <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>generate_post_data<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+
+</code></pre></div><p>In the example above we have a <code>BASH</code> function which uses <code>curl</code> and <code>jq</code> to extract a list of jobs which have the status <code>IMPORT_NEEDED</code>; the output of which is then feed into the last <code>curl</code> command.</p>
+<h3 id="getting-a-list-of-jobs-which-need-importing-for-a-project">Getting a list of jobs which need importing for a project</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s -X GET <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RUNDECK_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/api/30/project/anvils/scm/import/action/import-all/input?authtoken=</span><span style="color:#e6db74">${</span>RUNDECK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -H <span style="color:#e6db74">&#34;Accept: application/json&#34;</span> | jq <span style="color:#e6db74">&#39;[.importItems[] | select(.status == &#34;IMPORT_NEEDED&#34;) | .itemId]&#39;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+<span style="color:#e6db74">&#34;12345-789-abc&#34;</span>
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>Two minute Fudge!</title>
+            <link>/posts/two-minute-fudge/</link>
+            <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/two-minute-fudge/</guid>
+            <description>Intro I love fudge. There. I said it. Sometimes I like to reward myself with a little bit after work. Today I did exactly that, except that when I arrived at the kitchen I didn&amp;rsquo;t have any.
+ Zut alors!
+ No fear. We can make some! And the best bit? It doesn&amp;rsquo;t involve any scalding hot saucepans full of sugar. This fudge only requires two minutes in the microwave and an hour in the fridge1.</description>
+            <content type="html"><![CDATA[<h1 id="intro">Intro</h1>
+<p>I love fudge. There. I said it. Sometimes I like to reward myself with a little bit after work. Today I did exactly that, except that when I arrived at the kitchen I didn&rsquo;t have any.</p>
+<blockquote>
+<p>Zut alors!</p>
+</blockquote>
+<p>No fear. We can make some! And the best bit? It doesn&rsquo;t involve any scalding hot saucepans full of sugar. <em>This</em> fudge only requires two minutes in the microwave and an hour in the fridge<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h1 id="sounds-great-what-ingredients-do-i-need">Sounds great, what ingredients do I need?</h1>
+<p>For a medium<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> amount of fudge you will need:</p>
+<pre><code>| Command                    | Amount    |
+| -------------------------- | --------- |
+| Milk Chocolate             | 400 grams |
+| Condensed Milk             | 400 grams |
+| Microwavable Bowl          | One       |
+| Stirring Spoon             | One       |
+| Chopped Walnuts (optional) | Handful   |
+</code></pre>
+<p>To store your fudge you will want another dish (deep and square) and some grease proof paper.</p>
+<h1 id="recipe">Recipe</h1>
+<h2 id="step-one">Step One</h2>
+<p>Break up the chocolate into small bits. Mix with the condensed milk in the microwaveable bowl, then place in the microwave for a minute.</p>
+<p>Take the bowl out of the microwave and stir, mixing in the walnuts. If the chocolate hasn&rsquo;t quite melted give it another minute in the microwave.</p>
+<p><img src="/img/walnuts.jpg" alt="more fudge"></p>
+<h2 id="step-2">Step 2</h2>
+<p>Line a dish with greaseproof paper and pour the mixture in. Leave to set in the fridge for an hour.</p>
+<p>Once it&rsquo;s set you can take it out of the dish and cut it into small squares. Store in the fridge when not consuming!</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Now, because this is <em>two minute fudge</em> we are cutting some corners. The fudge needs to be chilled to maintain it&rsquo;s consistency. You have been warned.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Medium people deserve a medium amount of fudge.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+        </item>
+        
+        <item>
+            <title>OpenFAAS with TLS via Faasd and Terraform on Openstack</title>
+            <link>/posts/openfaas-openstack/</link>
+            <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/openfaas-openstack/</guid>
+            <description>Intro OpenFAAS is a serverless tool. One of the things I like most about it - it&amp;rsquo;s pretty agnostic. You can bring your own infra or orchestrator and roll with Dockerfiles (as long as they conform to the OpenFaas serverless workload definition). No vendor lock in!
+Their tagline: OpenFaaS® makes it simple to deploy both functions and existing code to Kubernetes
+While OpenFaas is mainly used with k8s, there are other providers available too.</description>
+            <content type="html"><![CDATA[<h1 id="intro">Intro</h1>
+<p><a href="https://www.openfaas.com/">OpenFAAS</a> is a serverless tool. One of the things I like most about it - it&rsquo;s pretty agnostic. You can bring your own infra or orchestrator and roll with Dockerfiles (as long as they conform to the <a href="https://docs.openfaas.com/reference/workloads/">OpenFaas serverless workload definition</a>). No vendor lock in!</p>
+<p>Their tagline:
+<code>OpenFaaS® makes it simple to deploy both functions and existing code to Kubernetes</code></p>
+<p>While OpenFaas is mainly used with k8s, there are <a href="https://docs.openfaas.com/architecture/faas-provider/">other providers</a> available too. We&rsquo;ll be experimenting with one of those (Faasd) in this post. The cloud of choice is <a href="https://www.openstack.org/">Openstack</a> based and we&rsquo;ll be using <a href="https://www.terraform.io/">Terraform</a> to manage our cloud resources within it.</p>
+<p>The Terraform required to make all this work is in <a href="https://github.com/markopolo123/openstack-faasd">this repository</a>.</p>
+<h2 id="why-would-i-want-to-do-this">Why would I want to do this?</h2>
+<p>You probably don&rsquo;t outside of curiosity. Personally, I want to do serverless on the edge with out the complexity and overhead of K8s. This is a cool way to achieve that!</p>
+<h1 id="prerequisites">Prerequisites</h1>
+<ol>
+<li>
+<p>You&rsquo;ll need an openstack project with the following resources available to consume:</p>
+<ul>
+<li>One Instance (and enough VCPU&rsquo;s and RAM for it)</li>
+<li>One Floating IP</li>
+<li>One Security Group</li>
+<li>One Network</li>
+<li>One Router</li>
+</ul>
+<p>You&rsquo;ll also want to make sure that you are able to connect to your cloud&rsquo;s APIs via the CLI. Note that Terraform supports authentication using both the newer application credentials via <a href="https://docs.openstack.org/python-openstackclient/ussuri/configuration/index.html">clouds.yaml</a> or <a href="https://docs.openstack.org/python-openstackclient/ussuri/cli/man/openstack.html#manpage">Environment Variables</a>.</p>
+</li>
+<li>
+<p><a href="https://www.terraform.io">Download Terraform</a>. It will need to be available on your <code>$PATH</code>.</p>
+</li>
+<li>
+<p>Clone this repo</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/markopolo123/openstack-faasd.git
+ <span style="color:#75715e"># move into the repository directory:</span>
+cd openstack-faasd
+</code></pre></div></li>
+<li>
+<p>Define variables in <code>variables.tfvars</code></p>
+<p>We&rsquo;ll need to create a file called <code>variables.tfvars</code> in the root of this project and populate with variables; required ones are shown below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat variables.tfvars
+
+letsencrypt_email <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Your email here&#34;</span>
+public_url      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;faasd.url.here&#34;</span>
+static_fip      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1.2.3.4&#34;</span> <span style="color:#75715e"># preallocated Floating IP</span>
+public_network  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#75715e"># Public Network ID for your Floating IP</span>
+image_name      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CentOS-8-GenericCloud-8.1.1911-20200113.3&#34;</span> <span style="color:#75715e"># Your image name here</span>
+dns_nameservers <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;8.8.8.8&#34;</span>, <span style="color:#e6db74">&#34;8.8.4.4&#34;</span><span style="color:#f92672">]</span> <span style="color:#75715e"># DNS if needed</span>
+flavor_name     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;C1.openstack.tiny&#34;</span> <span style="color:#75715e"># Flavor type here</span>
+</code></pre></div><blockquote>
+<p>Note that here the Floating IP has been pre allocated to the project - this is due to limitations with DNS CNAME records in the cloud available to me.</p>
+</blockquote>
+<p>There are more variables we could define here, for instance, we could change the versions of <em>containerd</em> or <em>faasd</em>. Check out <code>variables.tf</code> for a full list of variables for this project.</p>
+</li>
+<li>
+<p>Run commands in the <code>Makefile</code></p>
+<p>The Terraform commands have been wrapped in a <code>Makefile</code> to <em>make</em> things easier for us. It&rsquo;s pretty simple, but saves us having to remember a few flags/options on our terraform commands.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>make help</td>
+<td>lists available commands</td>
+</tr>
+<tr>
+<td>make plan</td>
+<td>Generates a plan of action for Terraform</td>
+</tr>
+<tr>
+<td>make apply</td>
+<td>Applies the plan generated in the last step</td>
+</tr>
+<tr>
+<td>make destroy</td>
+<td>Destroys the cloud resources</td>
+</tr>
+<tr>
+<td>make output</td>
+<td>Displays the output</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NOTE: The state file is local, which will probably not be what you want for a production instance. While we are at it - you will probably not want your OpenFaas password randomly generated and stored in your state file too. You have been warned ;)</p>
+</blockquote>
+</li>
+<li>
+<p>Enjoy OpenFaas</p>
+<p>The Terraform run completes in a few seconds, however <code>cloud-init</code> will take a minute or two to run through the sequence of commands required to get us up and running.</p>
+<p>After the Terraform run is finished you will be presented with the output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Outputs:
+
+gateway_url <span style="color:#f92672">=</span> https://your.url.here/
+login_cmd <span style="color:#f92672">=</span> faas-cli login -g https://your.url.here/ -p passwordhere
+password <span style="color:#f92672">=</span> passwordhere
+</code></pre></div></li>
+</ol>
+<h2 id="example">Example</h2>
+<p>Not much to see here, but just in case:</p>
+<!-- raw HTML omitted -->
+]]></content>
+        </item>
+        
+        <item>
+            <title>Inlets on the water</title>
+            <link>/posts/smart-boat/</link>
+            <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/smart-boat/</guid>
+            <description>Introduction Before we dive into the technical aspect of this blog post there should probably be some explanation for how we got here.
+Like many of us, I&amp;rsquo;ve at times struggled with the balance of remote work, lockdown and my personal life. I&amp;rsquo;ve done all the usual stuff - bread baking, home IOT setup, and a lot of cycling but there was another itch which required scratching.
+Meet Ionic. She&amp;rsquo;s a 17 metre narrow boat, laid down in 1986.</description>
+            <content type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>Before we dive into the technical aspect of this blog post there should probably be some explanation for how we got here.</p>
+<p>Like many of us, I&rsquo;ve at times struggled with the balance of remote work, lockdown and my personal life. I&rsquo;ve done all the usual stuff - bread baking, home IOT setup, and a lot of cycling but there was another itch which required scratching.</p>
+<p>Meet Ionic. She&rsquo;s a 17 metre narrow boat, laid down in 1986. I purchased her last Christmas and have been slowly renovating her and sailing up the Grand Union Canal in my spare time. It&rsquo;s a complete detachment from my digital existance, with lots of manual and dirty jobs. You quickly end up doing things you&rsquo;d never contemplated before.</p>
+<h1 id="okay-so-you-have-a-boat">Okay, so you have a boat</h1>
+<blockquote>
+<p>No DevOps engineer worth their salt could own a boat and not try to connect it to the internet.</p>
+<ul>
+<li>Me, probably</li>
+</ul>
+</blockquote>
+<p>This boat is currently pretty basic. The fuel level is measured with a stick. The water tank level is measured with a stick. Want to know where the boat is? Look at a map.</p>
+<p>There&rsquo;s a lot of potential here for an someone with a pile of Raspberry Pis, an Internet connection and some spare time.</p>
+<h2 id="hooking-up-to-the-internet">Hooking up to the Internet</h2>
+<p>I have a sim card with a data only contract, plugged into <a href="https://consumer.huawei.com/en/routers/5g-cpe-pro/specs/">one of these</a> This lives on the boat and is plugged into the 12 volt power system which itslf is feed from two 120 amp hour batteries. The batteries are kept topped up using solar panels. This system also powers the Pi.</p>
+<p>The Router also provides DHCP and WiFi for the boat.</p>
+<h2 id="starting-simple">Starting Simple</h2>
+<p>I decided to track <em>Ionic&rsquo;s</em> location using a Pi4, a USB GPS dongle and a prometheus exporter.</p>
+<p>A <a href="https://gpsd.gitlab.io/gpsd/">GPSD</a> exporter for prometheus did not exist so I <a href="https://github.com/markopolo123/gpsd_prometheus_exporter">wrote one</a></p>
+<p>Systemd is used to manage GPSD and the prometheus exporter. This is all installed and configured using an Ansible playbook.</p>
+<p>Here&rsquo;s a sample of the prometheus metrics presented from the boat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#</span>
+<span style="color:#75715e"># HELP longitude longitude measured</span>
+<span style="color:#75715e"># TYPE longitude gauge</span>
+longitude -1.327495167
+<span style="color:#75715e"># HELP latitude latitude measured</span>
+<span style="color:#75715e"># TYPE latitude gauge</span>
+latitude 52.054281667
+<span style="color:#75715e"># HELP speed Current speed in knots</span>
+<span style="color:#75715e"># TYPE speed gauge</span>
+speed 1.2926536000000002
+<span style="color:#75715e"># HELP altitude Current Altitude in metres</span>
+<span style="color:#75715e"># TYPE altitude gauge</span>
+altitude 113.1
+</code></pre></div><p>I use <a href="https://prometheus.io">Prometheus</a> to monitor the metrics and <a href="https://grafana.com">Grafana</a> to visualise them.</p>
+<h1 id="how-inlets-helps">How Inlets helps</h1>
+<p>Now we have a way to track <em>ionic&rsquo;s</em> location, speed and altitude. I started off running the whole stack locally, with both prometheus and grafana running on the boat&rsquo;s Pi4. This isn&rsquo;t particularly useful if I&rsquo;m not on the boat and frankly, it seems a bit wasteful as I have a prometheus and Grafana stack elsewhere anyway.</p>
+<p>So, we need a tunnel - the Pi 4 should automatically use this to connect to my network so metrics may be scraped from it using Prometheus. Inlets is a great choice for creating this tunnel I&rsquo;ve used it a lot in other projects and like the simplicitiy of it. Other ways to do this include a VPN like wireguard, SSH Tunneling with a static IP or dynamic DNS or similar.</p>
+<p><img src="/images/2021-05-16-boat/boat-inlets.jpg" alt="visual explanation"></p>
+<h1 id="next-steps">Next Steps</h1>
+<p>So we&rsquo;ve seen how inlets tunnels can be used to easily give access to metrics running on a boat. It&rsquo;s a bit of an <em>edge</em> case but, hey, if the tool fits ;)</p>
+<p>There&rsquo;s a bunch more things to do here:</p>
+<h2 id="adding-more-metrics">Adding more metrics.</h2>
+<p>The sky&rsquo;s the limit here:</p>
+<ul>
+<li>Solar power and battery statistics</li>
+<li>Fuel and water level gauges</li>
+<li>Air quality and temperature</li>
+</ul>
+<h2 id="flask-website-to-display-the-boats-location">Flask website to display the boat&rsquo;s location:</h2>
+<p><img src="/images/2021-05-16-boat/flask-app.jpg" alt="boat"></p>
+<h2 id="using-push-instead-of-pull">Using push instead of pull</h2>
+<p>It&rsquo;s not super important to me at the moment, but it would be nice for the boat to aggregate metrics and push them when it has a connection. Under the current model, any connection outage would result in lost data. This could also be useful if low power/burst modes are required. This could be done with the current stack, or maybe metrics will be shipped using another tool.</p>
+<h2 id="sending-text-messages">Sending text messages</h2>
+<p>Via the <a href="https://github.com/Salamek/huawei-lte-api/tree/master/huawei_lte_api">Huawei API</a>. I&rsquo;d like to invoke this using <a href="https://github.com/openfaas/faasd">faasd</a> running on the boat&rsquo;s Pi.</p>
+<p>Of course the boat still requires a lot of physical labour too, so take the above as more of a wish list of things I&rsquo;ll eventually get around to.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>k3s, Ubuntu 19.10 and a Pi4</title>
+            <link>/posts/ubuntu-pi4-k3s/</link>
+            <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/ubuntu-pi4-k3s/</guid>
+            <description>On the matter of Operating Systems Raspian is perfectly good, but there are a few niggles. It isn&amp;rsquo;t 64 bit, so running things like mongodb is a problem. Also, it&amp;rsquo;d be nice to use cloud-init to preconfigure some stuff, such as SSH keys. If you want to try a 64 bit OS for your Pi4, Ubuntu is a solid option.
+cgroup_memory = 0 cgroup_memory is disabled by default on raspbian and is required for k8s.</description>
+            <content type="html"><![CDATA[<h1 id="on-the-matter-of-operating-systems">On the matter of Operating Systems</h1>
+<p>Raspian is perfectly good, but there are a few niggles. It isn&rsquo;t 64 bit, so running things like mongodb is a problem. Also, it&rsquo;d be nice to use <a href="https://cloud-init.io/">cloud-init</a> to preconfigure some stuff, such as SSH keys.
+If you want to try a 64 bit OS for your Pi4, Ubuntu is a solid option.</p>
+<h1 id="cgroup_memory--0">cgroup_memory = 0</h1>
+<p><code>cgroup_memory</code> is disabled by default on raspbian and is required for k8s.</p>
+<p>On raspbian, cgroup_memory can be enabled by appending <code>cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1</code> to <code>/boot/cmdline.txt</code>. On Ubuntu, the location is different and may be divined by inspecting <code>/boot/firmware/README</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo -n <span style="color:#e6db74">&#34; cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1&#34;</span> &gt;&gt; /boot/firmware/nobtcmd.txt
+</code></pre></div><p>After a reboot try <code>cat /proc/cmdline</code> to make sure cgroup_memory is enabled.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>OpenFAAS via Containerd on a Raspberry PI 4</title>
+            <link>/posts/pi4-containerd-openfaas/</link>
+            <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/pi4-containerd-openfaas/</guid>
+            <description>Intro OpenFAAS is a serverless tool. One of the things I like most about it - it&amp;rsquo;s pretty agnostic. You can bring your own infra or orchestrator and roll with Dockerfiles. No vendor lock in!
+Their tagline: OpenFaaS® makes it simple to deploy both functions and existing code to Kubernetes
+While it is mainly used with k8s, there are also providers for other orchestrators, such as Hashicorp&amp;rsquo;s Nomad. Today I&amp;rsquo;ll be trying out a new provider for Containerd on my Raspberry Pi 4b.</description>
+            <content type="html"><![CDATA[<h1 id="intro">Intro</h1>
+<p><a href="https://www.openfaas.com/">OpenFAAS</a> is a serverless tool. One of the things I like most about it - it&rsquo;s pretty agnostic. You can bring your own infra or orchestrator and roll with Dockerfiles. No vendor lock in!</p>
+<p>Their tagline:
+<code>OpenFaaS® makes it simple to deploy both functions and existing code to Kubernetes</code></p>
+<p>While it is mainly used with k8s, there are also providers for other orchestrators, such as Hashicorp&rsquo;s Nomad. Today I&rsquo;ll be trying out a new provider for <a href="https://containerd.io/">Containerd</a> on my Raspberry Pi 4b.</p>
+<h1 id="installation">Installation</h1>
+<p>Before we can install OpenFAAS a few dependancies are required.</p>
+<h2 id="dependancies">Dependancies</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  sudo apt install -qy golang runc bridge-utils ethtool tmux git
+</code></pre></div><h2 id="install-containerd-for-stretch">Install Containerd for Stretch</h2>
+<p>Getting Containerd running requried me to use the Debian Buster packages&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://download.docker.com/linux/debian/dists/buster/pool/stable/armhf/containerd.io_1.2.6-3_armhf.deb
+sudo dpkg -i containerd.io_1.2.6-3_armhf.deb
+
+<span style="color:#75715e"># Check containerd is running</span>
+sudo systemctl status containerd
+</code></pre></div><h2 id="enable-forwarding">Enable Forwarding</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo /sbin/sysctl -w net.ipv4.conf.all.forwarding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><h2 id="install-a-bunch-of-go-packages">Install a bunch of Go Packages</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export GOPATH<span style="color:#f92672">=</span>$HOME/go/
+
+go get -u github.com/genuinetools/netns
+sudo mv $GOPATH/bin/netns /usr/bin/
+<span style="color:#75715e"># Grab and build openfaas for containerd</span>
+mkdir -p $GOPATH/src/github.com/alexellis/faas-containerd
+cd $GOPATH/src/github.com/alexellis/faas-containerd
+git clone https://github.com/alexellis/faas-containerd
+cd faas-containerd
+go build <span style="color:#f92672">&amp;&amp;</span> sudo function_uptime<span style="color:#f92672">=</span>120m ./faas-containerd
+</code></pre></div><p>At this point OpenFaas should be listening on http://127.0.0.1:8081.</p>
+<p>We may test this using the <code>faas-cli</code> tool&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Grabbing the faas-cli tool</span>
+curl -sLfS https://cli.openfaas.com | sudo sh
+
+<span style="color:#75715e"># Deploying a function</span>
+faas store deploy figlet -g 127.0.0.1:8081 --update<span style="color:#f92672">=</span>true --replace<span style="color:#f92672">=</span>false
+
+<span style="color:#75715e"># Lets see if figlet&#39;s okay</span>
+faas-cli describe figlet -g 127.0.0.1:8081
+
+<span style="color:#75715e"># Showing running containers</span>
+sudo ctr --namespace openfaas-fn containers list
+
+<span style="color:#75715e"># Testing the function</span>
+curl -X POST http://127.0.0.1:8081/function/figlet -d <span style="color:#e6db74">&#39;openfaas on containerd&#39;</span>
+</code></pre></div><p><img src="/img/openfaas.png" alt="OpenFaas on a Raspberry Pi 4 using Containerd"></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>New Hugo Site</title>
+            <link>/posts/home/</link>
+            <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/home/</guid>
+            <description>First post on the new site. It&amp;rsquo;s a hugo site, using the terminal theme by panr. Previously Pelican was my static site generator of choice but I&amp;rsquo;ve heard good things about Hugo and fancied giving it a go.
+Here&amp;rsquo;s how its configured:
+Installation I&amp;rsquo;m using Hugo with Github Pages) and my own hosting.
+As I won&amp;rsquo;t be using Hugo/this blog everyday I will forget the commands for it so I&amp;rsquo;ve wrapped everything I need into a Makefile:</description>
+            <content type="html"><![CDATA[<p>First post on the new site. It&rsquo;s a <a href="https://gohugo.io/">hugo</a> site, using the terminal theme by <a href="https://twitter.com/panr">panr</a>. Previously Pelican was my static site generator of choice but I&rsquo;ve heard good things about Hugo and fancied giving it a go.</p>
+<p>Here&rsquo;s how its configured:</p>
+<h1 id="installation">Installation</h1>
+<p>I&rsquo;m using Hugo with <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Github Pages</a>) and my own hosting.</p>
+<p>As I won&rsquo;t be using Hugo/this blog everyday I will forget the commands for it so I&rsquo;ve wrapped everything I need into a Makefile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">
+<span style="color:#a6e22e">help</span><span style="color:#f92672">:</span>
+	@echo <span style="color:#e6db74">&#34;make {build|test|deploy|new-post}&#34;</span>
+	@echo <span style="color:#e6db74">&#34;make new-post POST=test&#34;</span>
+	
+<span style="color:#a6e22e">build</span><span style="color:#f92672">:</span>
+	@hugo -t terminal
+
+<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
+	@hugo server -t terminal
+
+<span style="color:#a6e22e">deploy</span><span style="color:#f92672">:</span> build
+	./scripts/deploy-gh.sh
+	./scripts/deploy-sftp.sh
+
+<span style="color:#a6e22e">new-post</span><span style="color:#f92672">:</span>
+	hugo new posts/<span style="color:#66d9ef">$(</span>POST<span style="color:#66d9ef">)</span>.md
+	code .
+</code></pre></div><p>The site source code is available <a href="https://github.com/markopolo123/site-source">here</a>.</p>
+<h1 id="why">Why?</h1>
+<p>Few reasons:</p>
+<ul>
+<li>I want to practise and hopefully improve my writing</li>
+<li><a href="https://drewdevault.com/make-a-blog">Drew Devault&rsquo;s blog post</a></li>
+</ul>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

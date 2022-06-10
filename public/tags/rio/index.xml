@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rio on Personal Site</title>
+    <link>/tags/rio/</link>
+    <description>Recent content in rio on Personal Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/rio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rio on K3s on a pi4</title>
+      <link>/posts/rio-k3s-pi4/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/rio-k3s-pi4/</guid>
+      <description>Say What? Rio is a MicroPaaS for Kubernetes from Rancher. A not complete list of things Rio provides:
+ Automatic DNS Load Balancing Routing  We&#39;re going to be running it on a Raspberry Pi4, with Kubernetes coming from K3s, another Rancher project.
+Installation A few assumptions:
+ You have a working Raspberry Pi 4 A public IP and some way of routing traffic to your Pi.  Update your system:</description>
+    </item>
+    
+  </channel>
+</rss>
