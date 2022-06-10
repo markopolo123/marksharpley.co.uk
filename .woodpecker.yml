@@ -9,7 +9,7 @@ pipeline:
       - "hugo -t hello-friend-ng"
   stagingtest:
     image: lucap/drone-netlify
-    site_id: ${SITE_ID}
+    site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
     secrets: [ netlify_token, site_id]
     path: ./public/
     environment: staging
