@@ -1,10 +1,16 @@
 pipeline:
+  copy:
+    image: debian
+    commands:
+      - cd public
+      - ls
+      - cp -r . ..
   netlify:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
     secrets: [ netlify_token ]
-  build:
-    image: plugins/hugo
-    settings:
-      hugo_version: 0.55
-      validate: true
+  # build:
+  #   image: plugins/hugo
+  #   settings:
+  #     hugo_version: 0.55
+  #     validate: true
