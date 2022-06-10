@@ -3,10 +3,10 @@ pipeline:
     image: alpine/git
     commands:
       - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
-  # check:
-  #   image: debian
-  #   commands:
-  #     - ls
+  check:
+    image: debian
+    commands:
+      - ls
   build:
     image: plugins/hugo
     settings:
