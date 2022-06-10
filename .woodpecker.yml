@@ -16,11 +16,11 @@ pipeline:
     when:
       branch:
         exclude: [ master ]
-  production:
-    image: lucap/drone-netlify
-    site_id: $${SITE_ID}
-    secrets: [ netlify_token, site_id]
-    path: ./public/
-    environment: production
-    when:
-      branch: [ master ]
+  # production:
+  #   image: lucap/drone-netlify
+  #   site_id: $${SITE_ID}
+  #   secrets: [ netlify_token, site_id]
+  #   path: ./public/
+  #   environment: production
+  #   when:
+  #     branch: [ master ]
