@@ -1,10 +1,8 @@
 pipeline:
-  # copy:
-  #   image: debian
-  #   commands:
-  #     - cd public
-  #     - ls
-  #     - cp -r . ..
+  clone:
+    image: debian
+    commands:
+      - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
   # check:
   #   image: debian
   #   commands:
