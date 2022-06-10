@@ -1,12 +1,8 @@
 pipeline:
-  clone:
+  get-theme:
     image: alpine/git
     commands:
       - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
-  check:
-    image: debian
-    commands:
-      - ls
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
