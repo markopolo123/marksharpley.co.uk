@@ -1,21 +1,22 @@
 pipeline:
-  copy:
-    image: debian
-    commands:
-      - cd public
-      - ls
-      - cp -r . ..
-  check:
-    image: debian
-    commands:
-      - ls
+  # copy:
+  #   image: debian
+  #   commands:
+  #     - cd public
+  #     - ls
+  #     - cp -r . ..
+  # check:
+  #   image: debian
+  #   commands:
+  #     - ls
+  build:
+    image: plugins/hugo
+    settings:
+      hugo_version: 0.55
+      validate: true
+      theme: hello-friend-ng
   netlify:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
     secrets: [ netlify_token ]
     path: ./public/
-  # build:
-  #   image: plugins/hugo
-  #   settings:
-  #     hugo_version: 0.55
-  #     validate: true
