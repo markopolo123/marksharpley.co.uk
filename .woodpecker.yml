@@ -12,7 +12,7 @@ pipeline:
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
     secrets: [ netlify_token ]
     path: ./public/
-    environment: deploy-preview
+    environment: branch-deploy
     # when:
     #   branch:
     #     exclude: [ master ]
