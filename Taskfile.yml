@@ -1,0 +1,37 @@
+version: "3"
+
+env:
+  THEME: hello-friend-ng
+  USER: londonfe
+  SERVER: discovery.servers.prgn.misp.co.uk
+tasks:
+  grab-theme:
+    desc: Install theme
+    cmds:
+      - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
+    silent: true
+
+  test:
+    desc: Test site locally
+    cmds:
+      - hugo server -t $THEME
+    silent: true
+
+  deploy:
+    desc: Deploy site
+    cmds:
+      - ./scripts/deploy-sftp.sh
+    silent: true
+
+  build:
+    desc: Build the site
+    cmds:
+      - hugo -t $THEME
+    silent: true
+
+  publish:
+    deps: [build]
+    desc: Publish the site
+    cmds:
+      - rsync -avz -e "ssh -F config -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress public/* webserver:www
+    silent: true
