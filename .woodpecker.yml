@@ -13,6 +13,7 @@ pipeline:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
     secrets: [ netlify_token ]
+    path: ./public/
   # build:
   #   image: plugins/hugo
   #   settings:
