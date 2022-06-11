@@ -2,25 +2,23 @@ pipeline:
   get-theme:
     image: alpine/git
     commands:
-      - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git --branch 1.0.9 themes/hello-friend-ng
+      - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
       - "hugo -t hello-friend-ng"
-  staging:
+  stagingtest:
     image: lucap/drone-netlify
-    site_id: $${SITE_ID}
-    secrets: [ netlify_token, site_id]
+    site_id: 2d33a33c-eb2f-4071-9ba6-fd33cf1b3601
+    secrets: [ netlify_token ]
     path: ./public/
-    environment: staging
     when:
       branch:
         exclude: [ master ]
-  # production:
-  #   image: lucap/drone-netlify
-  #   site_id: $${SITE_ID}
-  #   secrets: [ netlify_token, site_id]
-  #   path: ./public/
-  #   environment: production
-  #   when:
-  #     branch: [ master ]
+  production:
+    image: lucap/drone-netlify
+    site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
+    secrets: [ netlify_token ]
+    path: ./public/
+    when:
+      branch: [ master ]

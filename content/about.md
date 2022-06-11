@@ -10,5 +10,5 @@ All views here are my own.
 Talk to me about:
 * GCP, AWS, Openstack
 * Orchestration: Terraform, K8s, Nomad
-* CfgMgt: Ansible
+* CfgMgt: Ansible ccc
 * CNCF tooling
