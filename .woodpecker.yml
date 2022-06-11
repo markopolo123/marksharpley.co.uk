@@ -15,6 +15,22 @@ pipeline:
     when:
       branch:
         exclude: [ master ]
+  notify:
+    image: appleboy/drone-telegram
+    settings:
+      token:
+        from_secret: telegram_token
+      to:
+        from_secret: user_id
+      format: markdown
+      message: >
+            ✅ Build ${CI_BUILD_EVENT} of `${CI_REPO_NAME}` succeeded.
+
+            📝 Commit by ${CI_COMMIT_AUTHOR} on `${CI_COMMIT_BRANCH}`:
+            
+            `${CI_COMMIT_MESSAGE}`
+            
+            🌐 ${CI_BUILD_LINK}
   production:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
