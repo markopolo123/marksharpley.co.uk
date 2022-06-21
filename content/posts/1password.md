@@ -1,5 +1,5 @@
 +++
-title = "1Password"
+title = "Why I'm now using 1Password"
 date = "2022-06-22"
 author = "Mark"
 cover = "/img/keys.jpg"
@@ -11,6 +11,7 @@ draft = false
 +++
 
 # Howdy 👋
+
 I recently purchased an *idevice*. "Fantastic", I hear you say, but what's that
 got to do with 1password? 
 
