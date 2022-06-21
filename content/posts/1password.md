@@ -1,6 +1,6 @@
 +++
 title = "1Password"
-date = "2022-06-23"
+date = "2022-06-22"
 author = "Mark"
 cover = "/img/keys.jpg"
 tags = ["1password", "secrets"]
