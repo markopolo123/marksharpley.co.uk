@@ -7,7 +7,7 @@ tags = ["milight", "esp8266", "led", "diy", "smart", "automation"]
 keywords = ["milight", "esp8266", "led", "diy", "smart", "automation"]
 description = "DIY smart LED Strip using NodeMCU ESP8266"
 showFullContent = false
-draft = false
+draft = true
 +++
 
 # Intro

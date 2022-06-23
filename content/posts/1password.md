@@ -7,7 +7,7 @@ tags = ["1Password", "secrets"]
 keywords = ["1Password", "secrets"]
 description = "Ravings about 1Password"
 showFullContent = false
-draft= false
+draft = false
 +++
 
 # Howdy 👋
@@ -71,7 +71,7 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1Password/t/agen
 
 ### Secrets Automation 🤖
 
-Taking 1Password a step towards [Hashicorp Vault](https://www.vaultproject.io),
+Taking 1Password a step towards [Hashicorp Vault](https://www.vaultproject.io), 
 [ secrets automation](https://developer.1Password.com/docs/connect/) gives your
 infra the ability to consume a private REST API.
 
