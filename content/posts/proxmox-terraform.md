@@ -11,11 +11,11 @@ showFullContent = false
 draft = false
 +++
 
-Quick post with an example of using Terraform to create LXC containers on Proxmox.
+Quick post with an example of using Terraform to create LXC containers on
+Proxmox.
 
-There are a few proxmox providers out there in the wilds, I chose to use the one by
-[telmate](https://github.com/Telmate/terraform-provider-proxmox):
-
+There are a few proxmox providers out there in the wilds, I chose to use the one
+by [telmate](https://github.com/Telmate/terraform-provider-proxmox):
 
 ```bash
 terraform {
@@ -29,7 +29,9 @@ terraform {
 ```
 
 ## Creating LXC Containers
-The Docs for this suck, here is a working snippet for version 2.6.5 of the provider:
+
+The Docs for this suck, here is a working snippet for version 2.6.5 of the
+provider:
 
 ```bash
 resource "proxmox_lxc" "lxc-test" {
@@ -59,5 +61,7 @@ resource "proxmox_lxc" "lxc-test" {
 }
 ```
 
-For more information on the Proxmox API have a look at the [docs](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc) and the Terraform Provider
-[source code](https://github.com/Telmate/terraform-provider-proxmox/blob/master/proxmox/resource_lxc.go).
+For more information on the Proxmox API have a look at the
+[docs](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc)
+and the Terraform Provider [source
+code](https://github.com/Telmate/terraform-provider-proxmox/blob/master/proxmox/resource_lxc.go).

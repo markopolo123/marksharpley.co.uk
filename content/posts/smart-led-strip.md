@@ -7,27 +7,24 @@ tags = ["milight", "esp8266", "led", "diy", "smart", "automation"]
 keywords = ["milight", "esp8266", "led", "diy", "smart", "automation"]
 description = "DIY smart LED Strip using NodeMCU ESP8266"
 showFullContent = false
-draft = true
+draft = false
 +++
-
-
 
 # Intro
 
 This is a desk. It's cool, but lacks lights. Let's fix that.
 
-
 # The Shopping List
 
-    | Item                           | Cost |
-    | ------------------------------ | ---- |
-    | ESP8266 NodeMCU CP2102         | £3   |
-    | Micro USB 5V Breakout Converter| £2   |
-    | Dupont Female to Female Wire   | £5   |
-    | 1m long WS2812B 60 LEDs        | £15  |
-
+    | Item                            | Cost |
+    | ------------------------------- | ---- |
+    | ESP8266 NodeMCU CP2102          | £3   |
+    | Micro USB 5V Breakout Converter | £2   |
+    | Dupont Female to Female Wire    | £5   |
+    | 1m long WS2812B 60 LEDs         | £15  |
 
 A Nodemcu on a desk:
+
 ![nodemcu](/img/nodemcuv2.jpeg)
 
 # Plugging it all in
@@ -38,13 +35,12 @@ Do a dry fit to make sure it all works, then break out the soldering iron.
 
 # Prepare for installation
 
-I'm using a mac with homebrew, so the below steps assume familarity with the terminal
-and homebrew
+I'm using a mac with homebrew, so the below steps assume familarity with the
+terminal and homebrew
 
 ```bash
 brew install esptool
 ```
-
 
 # Install the project
 
@@ -52,7 +48,8 @@ Download the latest release from the Github releases page.
 
 Ensure your esp2866 is plugged into your computer before running the next step.
 
-In your terminal navigate to where the binary is and run the esptool to flash the firmware
+In your terminal navigate to where the binary is and run the esptool to flash
+the firmware
 
 ```bash
 cd ~/Downloads
@@ -65,20 +62,19 @@ A successful flash will look like something like the below:
 
 ![success](/img/smart-led-success.png)
 
-
 # Adding to the WiFi network
-* Using your smartphone or laptop look for a new wifi network called `WLED-AP` and connect to it using the default password `wled1234`
+* Using your smartphone or laptop look for a new wifi network called `WLED-AP`
+  and connect to it using the default password `wled1234`
 
 ![wifi](/img/wifi.png)
 
 * Navigate to the IP address `http://4.3.2.1` in a browser
 * Fill-in the relevant wifi information for your network
 * Hit save
-
-
 # Using the REST API
-The WLED project has [comprehensive documentation](https://kno.wled.ge/interfaces/mqtt/)
-for their REST API
+
+The WLED project has [comprehensive
+documentation](https://kno.wled.ge/interfaces/mqtt/) for their REST API.
 
 # Next Steps
 * Design and print a box

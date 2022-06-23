@@ -1,33 +1,30 @@
-+++
-title = "Using Minio as a backend for Terraform"
-date = "2022-06-09"
-author = "Mark"
-cover = "/img/mars.jpg"
-tags = ["Terraform", "Minio"]
-keywords = ["terraform", "minio"]
-description = "Using Minio as a backend for Terraform"
-showFullContent = false
-draft = false
-+++
++++ title = "Using Minio as a backend for Terraform" date = "2022-06-09" author
+= "Mark" cover = "/img/mars.jpg" tags = ["Terraform", "Minio"] keywords =
+["terraform", "minio"] description = "Using Minio as a backend for Terraform"
+showFullContent = false draft = false +++
 
 # Hi There! 👋
-I've been doing a lot more with self hosting recently and wondered if it were possible
-to use [Minio](https://docs.min.io/minio/baremetal/console/minio-console.html#configuration)
+
+I've been doing a lot more with self hosting recently and wondered if it were
+possible to use
+[Minio](https://docs.min.io/minio/baremetal/console/minio-console.html#configuration)
 as a backend for [Terraform](https://www.terraform.io).
 
-> Spoiler... it is.
-> TLDR; link to the code is at the bottom of the article
+> Spoiler... it is. TLDR; link to the code is at the bottom of the article
 
 # Configuring Minio
 
-I already have Minio running locally, so all I needed to do was configure a service
-account and create a bucket to store the state in.
+I already have Minio running locally, so all I needed to do was configure a
+service account and create a bucket to store the state in.
 
-Make a note of the service account's `access key` and `secret key` and the bucket name.
+Make a note of the service account's `access key` and `secret key` and the
+bucket name.
 
 # Writing the Terraform
 
-As Minio is S3 compatible, I should be able to use the [S3 Terraform backend](https://www.terraform.io/language/settings/backends/s3) and point it at my bucket instead.
+As Minio is S3 compatible, I should be able to use the [S3 Terraform
+backend](https://www.terraform.io/language/settings/backends/s3) and point it at
+my bucket instead.
 
 ```hcl
 terraform {
@@ -55,4 +52,5 @@ export AWS_SECRET_ACCESS_KEY=replace-with-secret-key
 
 That's all you need to get started!
 
-A repository showing a working example is on [Github](https://github.com/markopolo123/minio-terraform-example)
+A repository showing a working example is on
+[Github](https://github.com/markopolo123/minio-terraform-example)
