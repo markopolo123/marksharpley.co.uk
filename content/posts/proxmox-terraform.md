@@ -2,7 +2,6 @@
 title = "LXC, Proxmox and Terraform"
 date = "2020-12-07"
 author = "Mark"
-authorTwitter = "" #do not include @
 cover = "/img/lonely-martian.jpg"
 tags = ["proxmox", "linux", "terraform"]
 keywords = ["proxmox", "linux", "terraform"]

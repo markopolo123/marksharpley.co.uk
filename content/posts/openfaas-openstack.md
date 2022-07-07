@@ -1,8 +1,13 @@
-+++ title = "OpenFAAS with TLS via Faasd and Terraform on Openstack" date =
-"2020-08-06" author = "Mark" cover = "/img/nasa-earth-space.jpg" tags =
-["OpenFAAS", "openstack", "Containerd", "Terraform"] keywords = ["serverless",
-"Linux", "openstack", "terraform"] description = "Deploying OpenFAAS on
-Openstack using Faasd, Terraform and Lets Encrypt" showFullContent = false +++
++++
+title = "OpenFAAS with TLS via Faasd and Terraform on Openstack"
+date = "2020-08-06"
+author = "Mark"
+cover = "/img/nasa-earth-space.jpg"
+tags = ["OpenFAAS", "openstack", "Containerd", "Terraform"]
+keywords = ["serverless", "Linux", "openstack", "terraform"]
+description = "Deploying OpenFAAS on Openstack using Faasd, Terraform and Lets Encrypt"
+showFullContent = false
++++
 
 # Intro
 

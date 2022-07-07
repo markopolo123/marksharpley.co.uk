@@ -1,8 +1,14 @@
-+++ title = "Free Functions as a service" date = "2021-07-23" author = "Mark"
-cover = "/img/faas.jpg" tags = ["OpenFAAS", "Oracle", "Containerd", "Terraform"]
-keywords = ["serverless", "Linux", "oracle", "terraform", "cloud"] description =
-"Deploying OpenFAAS on Oracle Cloud Always free tier using Faasd, Terraform and
-Lets Encrypt" showFullContent = false draft = false +++
++++ 
+title = "Free Functions as a service" 
+date = "2021-07-23" 
+author = "Mark"
+cover = "/img/faas.jpg" 
+tags = ["OpenFAAS", "Oracle", "Containerd", "Terraform"]
+keywords = ["serverless", "Linux", "oracle", "terraform", "cloud"]
+description = "Deploying OpenFAAS on Oracle Cloud Always free tier using Faasd, Terraform and Lets Encrypt"
+showFullContent = false
+draft = false
++++
 
 # Intro
 
@@ -27,7 +33,7 @@ since I already use CloudFlare for DNS HTTPS certs with Let's Encrypt and for
 Dynamic DNS it was a simple choice to use them for the DNS configuration in this
 project.
 
-Terraform makes this easy to use, I can create an instance in Oracle's cloud,
+Terraform makes this easy to use, I can create an instance in Oracle's cloud, 
 assign it a public IP which is then passed to Cloudflare as the IP to register
 for DNS.
 
@@ -48,7 +54,6 @@ brew install terraform
 ![having fun with oracle cloud](/img/oracle-cloud-signup.png)
 
 * Cloudflare account and a domain name using their nameservers.
-
 
 ![dns](/img/dns.png)
 

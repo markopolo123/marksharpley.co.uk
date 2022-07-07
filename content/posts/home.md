@@ -1,6 +1,13 @@
-+++ title = "New Hugo Site" date = "2019-12-11" author = "Mark" cover = "" tags
-= ["pipeline", "hugo"] keywords = ["", ""] description = "Setting up a new
-static site" showFullContent = false +++
++++
+title = "New Hugo Site"
+date = "2019-12-11"
+author = "Mark"
+cover = ""
+tags = ["pipeline", "hugo"]
+keywords = ["", ""]
+description = "Setting up a new static site"
+showFullContent = false
++++
 
 First post on the new site. It's a [hugo](https://gohugo.io/) site, using the
 terminal theme by [panr](https://twitter.com/panr). Previously Pelican was my
