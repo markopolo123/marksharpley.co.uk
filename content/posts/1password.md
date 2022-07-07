@@ -48,7 +48,7 @@ Here's why:
 
 ### SSH Key Management 🔑
 
-> this one is a bit of a game changer... This has changed my workflows. I no
+> This one is a bit of a game changer... This has changed my workflows. I no
 > longer have keys per device. Instead, keys exist per service and _context_.
 
 1Password has an [SSH Agent built
@@ -107,11 +107,11 @@ has you covered](https://developer.1Password.com/docs/cli/item-template-json).
 
 [Travel Mode](https://support.1Password.com/travel-mode/) makes certain vaults
 unavailable when you are travelling. Won't protect you from Mossad, but will
-give you piece of mind in normal travel situations
+give you piece of mind in normal travel situations...
 
 ![obligatory xkcd](https://imgs.xkcd.com/comics/security.png)
 
 ## Summary
 
-Two months of using this service and I keep finding useful features. It's well
+Two months using this service and I keep finding useful features. It's well
 worth the money!
