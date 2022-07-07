@@ -27,9 +27,9 @@ pipeline:
             ✅ Build ${CI_BUILD_EVENT} of `${CI_REPO_NAME}` succeeded.
 
             📝 Commit by ${CI_COMMIT_AUTHOR} on `${CI_COMMIT_BRANCH}`:
-            
+
             `${CI_COMMIT_MESSAGE}`
-            
+
             🌐 ${CI_BUILD_LINK}
   production:
     image: lucap/drone-netlify
