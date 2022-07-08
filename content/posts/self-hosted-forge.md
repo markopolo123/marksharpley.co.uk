@@ -1,6 +1,6 @@
 +++
 title = "Self Hosting a Forge"
-date = "2022-07-10"
+date = "2022-07-08"
 author = "Mark"
 cover = "/img/forge.jpg"
 tags = ["gitea", "woodpecker", "secrets"]
