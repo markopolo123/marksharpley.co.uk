@@ -1,9 +1,9 @@
 ---
 title: "About"
-date: 2019-12-15T11:18:12Z
+date: 2022-08-28T11:18:12Z
 ---
 
-I'm Mark Sharpley, a platform engineer for AstraZeneca.
+I'm Mark Sharpley, Principal Platform Engineer @ [Statsbomb](https://statsbomb.com)
 
 All views here are my own.
 
