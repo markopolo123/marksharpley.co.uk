@@ -1,14 +1,14 @@
 ---
 title: "About"
-date: 2019-12-15T11:18:12Z
+date: 2022-08-30T11:18:12Z
 ---
 
-I'm Mark Sharpley, a platform engineer for AstraZeneca.
+I'm Mark Sharpley, Principal Platform engineer @ [Statsbomb](https://statsbomb.com).
 
 All views here are my own.
 
 Talk to me about:
 * GCP, AWS, Openstack
 * Orchestration: Terraform, K8s, Nomad
-* CfgMgt: Ansible
+* CfgMgt: Ansiblesfsdfsdf
 * CNCF tooling

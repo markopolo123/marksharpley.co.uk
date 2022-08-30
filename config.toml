@@ -4,6 +4,12 @@ languageCode = "en-us"
 theme        = "hello-friend-ng"
 paginate     = 10
 
+enableGitInfo   = true
+enableEmoji     = true
+
+rssLimit  = 10  # Maximum number of items in the RSS feed.
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
@@ -24,6 +30,10 @@ paginate     = 10
   keywords = "devops"
   images = [""]
 
+  [params.footer]
+    trademark = true
+    rss = true
+
 [taxonomies]
     category = "blog"
     tag      = "tags"
@@ -31,7 +41,7 @@ paginate     = 10
 
 [languages]
   [languages.en]
-    title = "Welcome to my site"
+    title = "Recent Posts"
     subtitle = "Some time blog"
     keywords = "devops"
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
@@ -53,3 +63,7 @@ paginate     = 10
         identifier = "posts"
         name = "Posts"
         url = "/posts"
+      [[languages.en.menu.main]]
+        identifier = "now"
+        name = "Now"
+        url = "/now"
