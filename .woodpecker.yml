@@ -4,6 +4,9 @@ pipeline:
     commands:
       - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
       - cp index.html themes/hello-friend-ng/layouts/
+      - mkdir -p themes/hello-friend-ng/layouts/_default/_markup/
+      - cp render-codeblock-mermaid.html themes/hello-friend-ng/layouts/_default/_markup/render-codeblock-mermaid.html
+      - cat mermaid >> themes/hello-friend-ng/layouts/partials/javascript.html
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
