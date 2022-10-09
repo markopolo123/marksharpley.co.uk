@@ -4,11 +4,14 @@ pipeline:
     commands:
       - git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
       - cp index.html themes/hello-friend-ng/layouts/
+      - mkdir -p themes/hello-friend-ng/layouts/_default/_markup/
+      - cp render-codeblock-mermaid.html themes/hello-friend-ng/layouts/_default/_markup/render-codeblock-mermaid.html
+      - cat mermaid >> themes/hello-friend-ng/layouts/partials/javascript.html
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
       - "hugo -t hello-friend-ng"
-  stagingtest:
+  stagingdeploy:
     image: lucap/drone-netlify
     site_id: 2d33a33c-eb2f-4071-9ba6-fd33cf1b3601
     secrets: [netlify_token]
@@ -16,7 +19,7 @@ pipeline:
     when:
       branch:
         exclude: [master]
-  notify:
+  stagingnotify:
     image: appleboy/drone-telegram
     settings:
       token:
@@ -25,17 +28,38 @@ pipeline:
         from_secret: user_id
       format: markdown
       message: >
-        ✅ Build ${CI_BUILD_EVENT} of `${CI_REPO_NAME}` succeeded.
+        ✅ Build ${CI_BUILD_EVENT} of `${CI_REPO_NAME}` has status `${CI_BUILD_STATUS}`.
 
         📝 Commit by ${CI_COMMIT_AUTHOR} on `${CI_COMMIT_BRANCH}`:
 
         `${CI_COMMIT_MESSAGE}`
 
         🌐 ${CI_BUILD_LINK}
-  production:
+    when:
+      branch:
+        exclude: [master]
+  productiondeploy:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
     secrets: [netlify_token]
     path: ./public/
+    when:
+      branch: [master]
+  productionnotify:
+    image: appleboy/drone-telegram
+    settings:
+      token:
+        from_secret: telegram_token
+      to:
+        from_secret: user_id
+      format: markdown
+      message: >
+        ✅ Build ${CI_BUILD_EVENT} of `${CI_REPO_NAME}` has status `${CI_BUILD_STATUS}`.
+
+        📝 Commit by ${CI_COMMIT_AUTHOR} on `${CI_COMMIT_BRANCH}`:
+
+        `${CI_COMMIT_MESSAGE}`
+
+        🌐 ${CI_BUILD_LINK}
     when:
       branch: [master]
