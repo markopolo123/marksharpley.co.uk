@@ -11,6 +11,7 @@ pipeline:
       - echo ${CI_REPO_LINK}
       - echo ${CI_COMMIT_LINK}
       - echo ${CI_REPO}
+      - echo ${CI_BUILD_LINK}
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
