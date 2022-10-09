@@ -10,6 +10,7 @@ pipeline:
       - echo ${CI_COMMIT_PULL_REQUEST}
       - echo ${CI_REPO_LINK}
       - echo ${CI_COMMIT_LINK}
+      - echo ${CI_REPO}
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
