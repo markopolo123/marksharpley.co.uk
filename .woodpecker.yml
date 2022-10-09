@@ -63,11 +63,14 @@ pipeline:
         🌐 ${CI_BUILD_LINK}
     when:
       branch: [master]
-  post-to-gitea-pr:
-    image: tsakidev/giteacomment:latest
-    secrets: [gitea_token]
-    gitea_base_url: https://gitea.internal.sharpley.xyz
-    comment: "Hello from Drone"
+  comment:
+    image: mcs94/gitea-comment
+    settings:
+      gitea_address: https://gitea.internal.sharpley.xyz
+      gitea_token:
+        from_secret: gitea_token
+      comment: |
+        hello world
     when:
       branch:
         exclude: [master]
