@@ -39,17 +39,6 @@ pipeline:
     when:
       branch:
         exclude: [master]
-  comment:
-    image: mcs94/gitea-comment
-    settings:
-      gitea_address: https://gitea.internal.sharpley.xyz
-      gitea_token:
-        from_secret: gitea_token
-      comment: |
-                hello world
-    when:
-      branch:
-        exclude: [master]
   productiondeploy:
     image: lucap/drone-netlify
     site_id: 28937fed-b5c7-4b6e-9840-f45feffbd982
