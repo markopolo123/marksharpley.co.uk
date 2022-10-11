@@ -80,3 +80,5 @@ pipeline:
     when:
       branch:
         exclude: [master]
+    when:
+      event: [pull_request]
