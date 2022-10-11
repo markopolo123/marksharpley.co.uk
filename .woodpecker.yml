@@ -75,3 +75,13 @@ pipeline:
         🌐 ${CI_BUILD_LINK}
     when:
       branch: [master]
+  comment:
+    image: mcs94/gitea-comment
+    settings:
+      gitea_address: https://gitea.internal.sharpley.xyz
+      gitea_token:
+        from_secret: gitea_token
+      comment: |
+        hello world
+    when:
+      event: [pull_request]
