@@ -7,6 +7,7 @@ pipeline:
       - mkdir -p themes/hello-friend-ng/layouts/_default/_markup/
       - cp render-codeblock-mermaid.html themes/hello-friend-ng/layouts/_default/_markup/render-codeblock-mermaid.html
       - cat mermaid >> themes/hello-friend-ng/layouts/partials/javascript.html
+      - echo ${CI_COMMIT_PULL_REQUEST}
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
