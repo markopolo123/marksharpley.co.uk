@@ -71,6 +71,6 @@ pipeline:
       gitea_token:
         from_secret: gitea_token
       comment: |
-        hello world
+        hello world :///
     when:
       event: [pull_request]
