@@ -15,25 +15,18 @@ draft = false
 I recently purchased an _idevice_. "Fantastic", I hear you say, but what's that
 got to do with the title of this post?
 
-For years I've been an ardent [KeePassXC](https://keepassxc.org) user, syncing
-database files between devices using [Syncthing](https://syncthing.net) or
-similar self hosted tools and annoying everyone with the warm glow of smug self
-reliance. Sadly, Idevices don't like that kind of thing. It's iCloud or the
-highway for syncing files. Not wanting to iCloud all the things I decided to
-check out the big bad world of cloud hosted secrets management.
+For years I've been an ardent [KeePassXC](https://keepassxc.org) user, syncing database files between devices using [Syncthing](https://syncthing.net) or similar self hosted tools and annoying everyone with the warm glow of smug self reliance. Sadly, Idevices don't like that kind of thing. It's iCloud or the highway for syncing files. Not wanting to iCloud all the things I decided to check out the big bad world of cloud hosted secrets management.
 
 > Spoiler, I put nearly all my secrets in the cloud ☁️
 
-While searching online itI discovered there are two big players worth looking
-at, 1Password and bitwarden. Bitwarden scored points for self hoåsting and
-1Password came with a glowing review from my mate.
+While searching online I discovered there are two big players worth looking at, 1Password and Bitwarden. Bitwarden scored points for self hoåsting and 1Password came with a glowing review from my mate.
 
 # Picking 1Password
 
 I decided to give 1Password some money based on the following features:
 
-* Everything their side is encrypted, with keys supplied by the client
-* Great reputation across the industry
+* Everything on their side is encrypted, with keys supplied by the client
+* They have a great reputation across the industry
 * CLI tools for accessing secrets
 * RBAC and granular sharing capabilities
 * Applications for every operating system I use
@@ -57,9 +50,7 @@ keys. The docs are easy to use and clear.
 
 #### Making SSH key management usable
 
-Use the `nightly` version of the 1Password application. If you don't sessions
-won't persist and you will be requested for auth on each connection. Not cool if
-your Terraform or Ansible are using SSH.
+Use the `nightly` version of the 1Password application. If you don't sessions won't persist and you will be requested for auth on each connection. Not cool if your Terraform or Ansible are using SSH.
 
 Set SSH_AUTH_SOCK variable in your rc file or similar:
 
@@ -71,14 +62,11 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1Password/t/agen
 
 ### Secrets Automation 🤖
 
-Taking 1Password a step towards [Hashicorp Vault](https://www.vaultproject.io), 
-[ secrets automation](https://developer.1Password.com/docs/connect/) gives your
-infra the ability to consume a private REST API.
+Taking 1Password a step towards [Hashicorp Vault](https://www.vaultproject.io), [ secrets automation](https://developer.1Password.com/docs/connect/) gives your infra the ability to consume a private REST API.
 
 ### Fastmail Integration 📧
 
-1Password has [worked with fastmail](https://1Password.com/fastmail/) to create
-automatic unique email addresses per account.
+1Password has [worked with fastmail](https://1Password.com/fastmail/) to create automatic unique email addresses per account.
 
 This is pretty cool!
 
@@ -100,18 +88,15 @@ database:
 
 ### Item Templates 🍪
 
-If you need to create custom templates for new entries in your vault [1Password
-has you covered](https://developer.1Password.com/docs/cli/item-template-json).
+If you need to create custom templates for new entries in your vault [1Password has you covered](https://developer.1Password.com/docs/cli/item-template-json).
 
 ## Travel Mode
 
-[Travel Mode](https://support.1Password.com/travel-mode/) makes certain vaults
-unavailable when you are travelling. Won't protect you from Mossad, but will
+[Travel Mode](https://support.1Password.com/travel-mode/) makes certain vaults unavailable when you are travelling. Won't protect you from Mossad, but will
 give you piece of mind in normal travel situations...
 
 ![obligatory xkcd](https://imgs.xkcd.com/comics/security.png)
 
 ## Summary
 
-Two months using this service and I keep finding useful features. It's well
-worth the money!
+Two months using this service and I keep finding useful features. It's well worth the money!
