@@ -1,3 +1,10 @@
 .envrc
 .idea/*
 ./public/*
+.DS_Store
+.AppleDouble
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+Thumbs.db
