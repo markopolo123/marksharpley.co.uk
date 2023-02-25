@@ -33,6 +33,8 @@ copyright = "This work is licensed under a Creative Commons Attribution-NonComme
   [params.footer]
     trademark = true
     rss = true
+[params.assets]
+    disableFingerprinting = true
 
 [taxonomies]
     category = "blog"
