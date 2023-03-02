@@ -6,7 +6,7 @@ pipeline:
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
-      - "hugo -t loveit"
+      - "hugo -t LoveIt"
   stagingdeploy:
     image: lucap/drone-netlify
     site_id: 2d33a33c-eb2f-4071-9ba6-fd33cf1b3601
