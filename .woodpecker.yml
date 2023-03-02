@@ -2,8 +2,7 @@ pipeline:
   get-theme:
     image: alpine/git
     commands:
-      - git clone https://github.com/dillonzq/LoveIt.git themes/LoveI
-
+      - git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
   hugo-build:
     image: klakegg/hugo:0.93.2-alpine-ci
     commands:
