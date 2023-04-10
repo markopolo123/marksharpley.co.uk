@@ -27,4 +27,4 @@ jobs:
         env:
           OP_CONNECT_HOST: https://1password.internal.sharpley.xyz
           OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
-          SECRET: op://homelab/telegram-bot/credential
+          SECRET: op://homelab/telegram_bot/credential
