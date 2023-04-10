@@ -23,7 +23,7 @@ jobs:
         id: op-load-secret
         uses: https://github.com/1password/load-secrets-action@v1
         with:
-          export-env: false
+          export-env: true
         env:
           OP_CONNECT_HOST: https://1password.internal.sharpley.xyz
           OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
