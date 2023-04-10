@@ -1,8 +1,8 @@
-name: Gitea Actions Demo
+name: Gitea Actions Hugo Build
 run-name: Testing hugo 🚀
 on: [push]
 jobs:
-  Explore-Gitea-Actions:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Hugo
@@ -10,3 +10,6 @@ jobs:
         with:
           hugo-version: "0.111.3"
           extended: true
+      - name: List files in the repository
+        run: |
+          ls ${{ gitea.workspace }}
