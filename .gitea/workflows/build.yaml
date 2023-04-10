@@ -28,3 +28,6 @@ jobs:
           OP_CONNECT_HOST: https://1password.internal.sharpley.xyz
           OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
           SECRET: op://homelab/telegram_bot/credential
+
+      - name: Print masked secret
+        run: echo "Secret is $SECRET"
