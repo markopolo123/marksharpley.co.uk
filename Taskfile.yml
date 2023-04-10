@@ -1,7 +1,7 @@
 version: "3"
 
 env:
-  THEME: hello-friend-ng
+  THEME: loveit
 tasks:
   grab-theme:
     desc: Install theme
