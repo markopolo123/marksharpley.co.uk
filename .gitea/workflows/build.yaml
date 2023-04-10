@@ -19,3 +19,12 @@ jobs:
           ls ${{ gitea.workspace }}
       - name: Build
         run: hugo --minify
+      - name: Load secret
+        id: op-load-secret
+        uses: 1password/load-secrets-action@v1
+        with:
+          export-env: false
+        env:
+          OP_CONNECT_HOST: https://1password.internal.sharpley.xyz
+          OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
+          SECRET: op://homelab/telegram-bot/credential
