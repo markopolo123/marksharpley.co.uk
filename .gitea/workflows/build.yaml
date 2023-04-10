@@ -21,7 +21,7 @@ jobs:
         run: hugo --minify
       - name: Load secret
         id: op-load-secret
-        uses: 1password/load-secrets-action@v1
+        uses: https://github.com/1password/load-secrets-action@v1
         with:
           export-env: false
         env:
