@@ -12,6 +12,11 @@ jobs:
           extended: true
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Checkout theme repo
+        uses: actions/checkout@v3
+        with:
+          repository: https://github.com/dillonzq/LoveIt.git
+          path: themes/LoveIt
       - name: List files in the repository
         run: |
           ls ${{ gitea.workspace }}
