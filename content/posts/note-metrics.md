@@ -16,14 +16,11 @@ A fine thing happened recently: Obisidian v1.0.0 was released. Which I discovere
 through this hacker news post. The comment section on Hacker News are usually 💰 
 and this one was no exception, here is a quote from the top comment:
 
-```
-Finally, a note taking application with a decent API that's allowed me to extract
-metadata and publish metrics into CloudWatch, allowing me to track key metrics 
+    Finally, a note taking application with a decent API that's allowed me to extract metadata and publish metrics into CloudWatch, allowing me to track key metrics 
+
 and graphically[0] review historical trends of my "second brain." Previous note 
 taking applications I've tried in the past (e.g. Zettlr, Bear) lacked the vibrant 
 developer community that Obsidian has cultivated.
-
-```
 
 👆 Posts like this keep me coming back to Hacker News. Also, game recognises game. Here's
 a link their [blog post](https://digitalorganizationdad.substack.com/p/stop-zettelkasten-literature-notes) explaining the full stack and pipeline.
