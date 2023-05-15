@@ -30,4 +30,4 @@ jobs:
           SECRET: op://homelab/telegram_bot/credential
 
       - name: Print masked secret
-        run: echo "Secret is $SECRET"
+        run: echo "Secrset is $SECRET"
