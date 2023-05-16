@@ -27,18 +27,26 @@ called `.woodpecker/` . This directory can also be [overriden](https://woodpecke
 
 What follows is an example for the following git work flow:
 
-```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'neutral', 'useMaxWidth':true }}%%
-      gitGraph
-        commit
-        branch new-post
-        checkout new-post
-        commit id:"adding content"
-        commit id:"adding more content"
-        commit id:"fixing typo"
-        checkout main
-        merge new-post type: NORMAL
-```
+{{< mermaid >}}
+gitGraph
+  commit
+  branch new-post
+  checkout new-post
+  commit id:"adding content"
+  commit id:"adding more content"
+  commit id:"fixing typo"
+  checkout main
+  merge new-post type: NORMAL
+{{< /mermaid >}}
+{{< mermaid >}}
+graph LR; 
+
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+
+{{< /mermaid >}}
 
 What the pipeline needs to do:
 * Create a staging site for the dev branch, which gets recreated everytime a commit is pushed to the feature branch.
