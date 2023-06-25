@@ -1,0 +1,33 @@
+name: Gitea Actions Hugo Build
+run-name: Testing hugo 🚀
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Hugo
+        uses: https://github.com/peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.111.3"
+          extended: true
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Clone theme
+        run: git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
+      - name: List files in the repository
+        run: |
+          ls ${{ gitea.workspace }}
+      - name: Build
+        run: hugo --minify
+      - name: Load secret
+        id: op-load-secret
+        uses: https://github.com/1password/load-secrets-action@v1
+        with:
+          export-env: true
+        env:
+          OP_CONNECT_HOST: https://1password.internal.sharpley.xyz
+          OP_CONNECT_TOKEN: ${{ secrets.OP_CONNECT_TOKEN }}
+          SECRET: op://homelab/telegram_bot/credential
+
+      - name: Print masked secret
+        run: echo "Secret is $SECRET"
