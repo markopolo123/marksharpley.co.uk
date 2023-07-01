@@ -2,12 +2,13 @@
 title = "Building Netlify sites using Woodpecker"
 date = "2022-10-08"
 author = "Mark"
-cover = "/img/woodpecker.jpeg"
+featuredImage = "/img/woodpecker.jpeg"
 tags = ["netlify", "woodpecker", "cicd", "telegram"]
 keywords = ["netlify", "woodpecker", "cicd", "telegram"]
 description = "Building Netlify sites using Woodpecker and notifying telegram"
 showFullContent = false
 draft = false
+summary = "Building Netlify sites using Woodpecker and notifying via telegram"
 +++
 
 # Howdy! 👋
@@ -26,27 +27,6 @@ a single file ( `.woodpecker.yml` ) or split out into multiple files inside a di
 called `.woodpecker/` . This directory can also be [overriden](https://woodpecker-ci.org/docs/usage/project-settings).
 
 What follows is an example for the following git work flow:
-
-{{< mermaid >}}
-gitGraph
-  commit
-  branch new-post
-  checkout new-post
-  commit id:"adding content"
-  commit id:"adding more content"
-  commit id:"fixing typo"
-  checkout main
-  merge new-post type: NORMAL
-{{< /mermaid >}}
-{{< mermaid >}}
-graph LR; 
-
-    A[Hard edge] -->|Link text| B(Round edge)
-    B --> C{Decision}
-    C -->|One| D[Result one]
-    C -->|Two| E[Result two]
-
-{{< /mermaid >}}
 
 What the pipeline needs to do:
 * Create a staging site for the dev branch, which gets recreated everytime a commit is pushed to the feature branch.

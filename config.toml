@@ -1,75 +1,82 @@
-baseurl      = "/"
-title        = "Personal Site"
-languageCode = "en-us"
-theme        = "LoveIt"
-paginate     = 10
+baseURL = "http://example.org/"
+# [en, zh-cn, fr, ...] determines default content language
+defaultContentLanguage = "en"
+# language code
+languageCode = "en"
+title = "My New Hugo Site"
 
-# enableGitInfo   = true
-enableEmoji     = true
-
-rssLimit  = 10  # Maximum number of items in the RSS feed.
-copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+# Change the default theme to be use when building the site with Hugo
+theme = "DoIt"
 
 [params]
-  dateform        = "Jan 2, 2006"
-  dateformShort   = "Jan 2"
-  dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04"
-
-  # Subtitle for home
-  homeSubtitle = ""
-
-  # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  disableReadOtherPosts = false
-
-  # Enable sharing buttons, if you linke
-  enableSharingButtons = false
-
-  # Metadata mostly used in document's head
-  description = "My Personal Site"
-  keywords = "devops"
-  images = [""]
-
+  # DoIt theme version
+  version = "0.2.X"
   [params.footer]
     trademark = true
     rss = true
-[params.assets]
-    disableFingerprinting = true
-
+  [params.outdatedArticleReminder]
+    enable = false
+    # Display the reminder if the last modified time is more than 90 days ago.
+    # 如果文章最后更新于这天数之前，显示提醒
+    reminder = 90
+    # Display warning if the last modified time is more than 180 days ago.
+    # 如果文章最后更新于这天数之前，显示警告
+    warning = 180
+  [params.page.toc]
+      # whether to enable the table of the contents
+      enable = true
+      # whether to keep the static table of the contents in front of the post
+      keepStatic = false
+      # whether to make the table of the contents in the sidebar automatically collapsed
+      auto = true
+  [params.page.code]
+      # whether to show the copy button of the code block
+      copy = true
+      # the maximum number of lines of displayed code by default
+      maxShownLines = 50
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    # you can add extra information before the name (HTML format is supported), such as icons
+    pre = ""
+    # you can add extra information after the name (HTML format is supported), such as icons
+    post = ""
+    name = "Posts"
+    url = "/posts/"
+    # title will be shown when you hover on this menu link
+    title = ""
+    weight = 1
+  [[menu.main]]
+    identifier = "series"
+    pre = ""
+    post = ""
+    name = "Series"
+    url = "/series/"
+    title = ""
+    weight = 2
+  [[menu.main]]
+    identifier = "now"
+    name = "Now"
+    url = "/now"
+    weight = 3
+  [[menu.main]]
+    pre = "<i class='fab fa-github fa-fw'></i>"
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/markopolo123"
+    weight = 4
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about"
+# Markup related configuration in Hugo
+[markup]
+  # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+    noClasses = false
 [taxonomies]
-    category = "blog"
-    tag      = "tags"
-    series   = "series"
-[params.page.code]
-    # whether to show the copy button of the code block
-    copy = true
-    # the maximum number of lines of displayed code by default
-    maxShownLines = 50
-[languages]
-  [languages.en]
-    title = "Recent Posts"
-    subtitle = "Some time blog"
-    keywords = "devops"
-    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-    readOtherPosts = "Read other posts"
-
-    [languages.en.params.logo]
-      logoText = "Home"
-      logoHomeLink = "/"
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about"
-      [[languages.en.menu.main]]
-        identifier = "github"
-        name = "GitHub"
-        url = "https://github.com/markopolo123"
-      [[languages.en.menu.main]]
-        identifier = "posts"
-        name = "Posts"
-        url = "/posts"
-      [[languages.en.menu.main]]
-        identifier = "now"
-        name = "Now"
-        url = "/now"
+    series = "series"
+    author = "authors"
+    category = "categories"
+    tag = "tags"

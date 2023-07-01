@@ -2,7 +2,7 @@
 title = "Tools of The Trade :: Git"
 date = "2021-12-18"
 author = "Mark"
-cover = "/img/tools.jpg"
+featuredImage = "/img/tools.jpg"
 tags = ["git", "tools-of-the-trade", "git-ops", ]
 keywords = ["git", "tools-of-the-trade", "git-ops"]
 description = "First post in a series looking at tooling which makes work easier"

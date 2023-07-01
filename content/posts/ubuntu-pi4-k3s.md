@@ -2,7 +2,7 @@
 title = "k3s, Ubuntu 19.10 and a Pi4"
 date = "2020-01-13"
 author = "Mark"
-cover = "/img/trees.jpg"
+featuredImage = "/img/trees.jpg"
 tags = ["k8s", "Pi4", "k3s", "ubuntu"]
 keywords = ["kubernetes", "Linux"]
 description = "Making Kubernetes work on a Raspberry Pi4 with Ubuntu"

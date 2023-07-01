@@ -2,7 +2,7 @@
 title = "Rundeck and Terraform"
 date = "2020-09-12"
 author = "Mark"
-cover = "/img/timothy-eberly-yuiJO6bvHi4-unsplash.jpg"
+featuredImage = "/img/timothy-eberly-yuiJO6bvHi4-unsplash.jpg"
 tags = ["Rundeck", "API", "Terraform"]
 keywords = ["Rundeck", "API", "Terraform"]
 description = "Interact with Rundeck via it's API"

@@ -2,7 +2,7 @@
 title = "Reusing Old Smart bulbs"
 date = "2021-07-15"
 author = "Mark"
-cover = "/img/bulb.jpg"
+featuredImage = "/img/bulb.jpg"
 tags = ["milight", "esp8266", "diy", "smart", "automation"]
 keywords = ["milight", "esp8266", "diy", "smart", "automation"]
 description = "DIY smart hub using NodeMCU ESP8266"

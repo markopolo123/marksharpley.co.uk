@@ -2,7 +2,7 @@
 title = "New Hugo Site"
 date = "2019-12-11"
 author = "Mark"
-cover = ""
+featuredImage = ""
 tags = ["pipeline", "hugo"]
 keywords = ["", ""]
 description = "Setting up a new static site"

@@ -2,12 +2,13 @@
 title = "Cleaning The Castle"
 date = "2022-11-08"
 author = "Mark"
-cover = "/img/oliver-hale-oTvU7Zmteic-unsplash.jpg"
+featuredImage = "/img/oliver-hale-oTvU7Zmteic-unsplash.jpg"
 tags = ["obsidian", "madness", "zettelkasten", "telegram"]
 keywords = ["obsidian", "madness", "zettelkasten", "telegram"]
 description = "Warbling into madness slowly."
 showFullContent = false
 draft = false
+summary = "Warbling into madness slowly - using prometheus to track note metrics"
 +++
 
 # Howdy! 👋

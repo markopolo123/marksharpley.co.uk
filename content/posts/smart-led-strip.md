@@ -2,7 +2,7 @@
 title = "Making a smart LED Strip"
 date = "2021-10-18"
 author = "Mark"
-cover = "/img/leds.jpg"
+featuredImage = "/img/leds.jpg"
 tags = ["milight", "esp8266", "led", "diy", "smart", "automation"]
 keywords = ["milight", "esp8266", "led", "diy", "smart", "automation"]
 description = "DIY smart LED Strip using NodeMCU ESP8266"

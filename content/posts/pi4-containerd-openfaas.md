@@ -2,7 +2,7 @@
 title = "OpenFAAS via Containerd on a Raspberry PI 4"
 date = "2019-12-20"
 author = "Mark"
-cover = "/img/pi4-openfaas-containerd.jpg"
+featuredImage = "/img/pi4-openfaas-containerd.jpg"
 tags = ["OpenFAAS", "Pi4", "Containerd"]
 keywords = ["serverless", "Linux"]
 description = "Testing OpenFAAS with Containerd on a Raspberry PI 4"

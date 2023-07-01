@@ -2,7 +2,7 @@
 title = "Inlets on the water"
 date = "2020-05-16"
 author = "Mark"
-cover = "/img/boat.jpg"
+featuredImage = "/img/boat.jpg"
 tags = ["linux", "Pi4", "inlets", "boat"]
 keywords = ["boat", "smart", "iot"]
 description = "Inlets on the water, making a smart boat talkative"
@@ -14,8 +14,8 @@ draft = false
 Before we dive into the technical aspect of this blog post there should probably
 be some explanation for how we got here.
 
-Like many of us, I've at times struggled with the balance of remote work,
-lockdown and my personal life. I've done all the usual stuff - bread baking,
+Like many of us, I've at times struggled with the balance of remote work, 
+lockdown and my personal life. I've done all the usual stuff - bread baking, 
 home IOT setup, and a lot of cycling but there was another itch which required
 scratching.
 
@@ -85,7 +85,7 @@ I use [Prometheus](https://prometheus.io) to monitor the metrics and
 
 Now we have a way to track _ionic's_ location, speed and altitude. I started off
 running the whole stack locally, with both prometheus and grafana running on the
-boat's Pi4. This isn't particularly useful if I'm not on the boat and frankly,
+boat's Pi4. This isn't particularly useful if I'm not on the boat and frankly, 
 it seems a bit wasteful as I have a prometheus and Grafana stack elsewhere
 anyway.
 

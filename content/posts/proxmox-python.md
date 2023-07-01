@@ -2,12 +2,13 @@
 title = "Controlling a Proxmox VM with Python"
 date = "2023-02-25"
 author = "Mark"
-cover = "/img/python-discord.jpg"
+featuredImage = "/img/python-discord.png"
 tags = ["python", "discord", "proxmox"]
 keywords = ["python", "discord", "proxmox"]
 description = "Using Proxmoxer library to control a Proxmox QEMU VM"
 showFullContent = false
 draft = false
+summary = "Creating a Discord bot to control a Proxmox QEMU VM"
 +++
 
 # Hi 👋

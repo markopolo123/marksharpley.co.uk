@@ -2,7 +2,7 @@
 title = "Using Minio as a backend for Terraform"
 date = "2022-06-09"
 author = "Mark"
-cover = "/img/mars.jpg"
+featuredImage = "/img/mars.jpg"
 tags = ["Terraform", "Minio"]
 keywords = ["terraform", "minio"]
 description = "Using Minio as a backend for Terraform"

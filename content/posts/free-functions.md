@@ -2,7 +2,7 @@
 title = "Free Functions as a service" 
 date = "2021-07-23" 
 author = "Mark"
-cover = "/img/faas.jpg" 
+featuredImage = "/img/faas.jpg" 
 tags = ["OpenFAAS", "Oracle", "Containerd", "Terraform"]
 keywords = ["serverless", "Linux", "oracle", "terraform", "cloud"]
 description = "Deploying OpenFAAS on Oracle Cloud Always free tier using Faasd, Terraform and Lets Encrypt"

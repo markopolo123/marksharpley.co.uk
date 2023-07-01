@@ -2,7 +2,7 @@
 title = "Two minute Fudge!"
 date = "2020-08-31"
 author = "Mark"
-cover = "/img/fudge.jpg"
+featuredImage = "/img/fudge.jpg"
 tags = ["Fudge", "Serverless"]
 keywords = ["serverless", "Fudge", "Sweet", "Easy"]
 description = "Fudge in Two minutes"

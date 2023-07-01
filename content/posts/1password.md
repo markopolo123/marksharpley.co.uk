@@ -2,7 +2,7 @@
 title = "Why I'm now using 1Password"
 date = "2022-06-22"
 author = "Mark"
-cover = "/img/keys.jpg"
+featuredImage = "/img/keys.jpg"
 tags = ["1Password", "secrets"]
 keywords = ["1Password", "secrets"]
 description = "Ravings about 1Password"
